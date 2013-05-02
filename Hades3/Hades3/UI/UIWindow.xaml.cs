@@ -51,13 +51,15 @@ namespace Hades3
             experimentButtonMapping = new Dictionary<Button, Experiment>();
 
             startConfigChoices = new Dictionary<ComboBoxItem, Type>();
-            IEnumerable<String> paramFileNames = Directory.EnumerateFiles("JSONParams");
+            IEnumerable<String> paramFileNames = Directory.EnumerateFiles("Content");          
 
             foreach (String f in paramFileNames)
             {
-                ComboBoxItem newItem = new ComboBoxItem();
-                newItem.Content = System.IO.Path.GetFileName(f);
-                startConfigurationComboBox.Items.Add(newItem);
+                if(System.IO.Path.GetExtension(f) == ".json"){
+                    ComboBoxItem newItem = new ComboBoxItem();
+                    newItem.Content = System.IO.Path.GetFileName(f);
+                    startConfigurationComboBox.Items.Add(newItem);
+                }
             }
 
             finalCellNumberDataSource = new ObservableDataSource<Point>();

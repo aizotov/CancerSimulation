@@ -145,6 +145,7 @@ namespace Hades3
             setupPressureAroundPipes(circulatorySystem, simulationParams.PipePressureDistance, simulationParams.PipePressureInitial, simulationParams.PipePressureIncrement);
 
             Console.WriteLine("initializing cells");
+            Console.WriteLine("behavior: " + simulationParams.behaviorType);
             initializeCells(simulationParams.startingCells, simulationParams.behaviorType);
         }
 

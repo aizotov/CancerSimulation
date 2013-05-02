@@ -1,0 +1,464 @@
+{
+   "description":"single tissue, blast cell start",
+
+   "environmentFirstCorner":"0, 0, 0",
+   "environmentSecondCorner":"140, 79, 69",
+
+   "tissueParams":[
+      {
+         "firstCorner":"10, 20, 10",
+         "secondCorner":"49, 59, 49"
+      },
+      {
+         "firstCorner":"79, 20, 10",
+         "secondCorner":"119, 59, 49" 
+      }
+   ],
+
+   "CameraEye":"65, 119.4, 120.2",
+   "CameraLookAt":"65, 25, 25",
+
+   "wtf is going on":"Eh?"
+
+   "behaviorType":0,
+
+   "cellParameters":{
+      "MaxPressureToleranceAtLocation":1500,
+      "MinPressureToleranceAtLocation":1,
+
+      "MaxPressureToleranceAtNeighbors": 1500,
+      "MinPressureToleranceAtLocation":1,
+
+      "MaxFoodConsumptionRate":10,
+      "MinFoodConsumptionRate":1,
+      "MaxFoodStorage":200,
+      "MinFoodStorage":50,
+      "MaxFoodConcernLevel":95,
+      "MinFoodConcernLevel":10,
+
+      "BlastCellMutationProbability":0.0,
+      "BlastCellRepairProbability":0.0,
+      "BlastCellColor":"255, 0, 0, 255",
+      "FinalCellMutationProbability":0.0,
+      "FinalCellRepairProbability":0.0,
+      "FinalCellGenerationLimit":70,
+      "FinalCellColor":"0, 128, 0, 255",
+      "PressureAtCell":100,
+      "PressureNearCell":1,
+      "MinPressure":1,
+      "EndothelialCellColor":"128, 0, 128, 255",
+      "PipeShrink":0.98,
+      "MutateBy":0.0
+   },
+
+   
+   "startingCells":[
+      {
+         "cellType":"Hades3.BlastCell, Hades3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+         "location":"40, 40, 40",
+         "simpleBehavior":{
+            "startingPressureToleranceAtLocation":100,
+            "startingPressureToleranceAtNeighbors":1,
+            "startingDivideRate":0.4,
+            "startingDeathRate":0.01,
+            "FoodConsumptionRate":1,
+            "FoodMaxStorage":100,
+            "FoodConcernLevel":70,
+            "MoveProbability":0.8,
+            "EnterPipeProbability":0.8,
+            "LeavePipeProbability":0.001,
+            "SurvivePipeProbability":1.0
+         },
+         "goBehavior":null,
+         "startingFood":20
+      },
+      {
+         "cellType":"Hades3.BlastCell, Hades3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+         "location":"43, 43, 43",
+         "simpleBehavior":{
+            "startingPressureToleranceAtLocation":100,
+            "startingPressureToleranceAtNeighbors":1,
+            "startingDivideRate":0.4,
+            "startingDeathRate":0.01,
+            "FoodConsumptionRate":1,
+            "FoodMaxStorage":100,
+            "FoodConcernLevel":70,
+            "MoveProbability":0.8,
+            "EnterPipeProbability":0.8,
+            "LeavePipeProbability":0.001,
+            "SurvivePipeProbability":1.0
+         },
+         "goBehavior":null,
+         "startingFood":20
+      },
+      {
+         "cellType":"Hades3.BlastCell, Hades3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+         "location":"37, 37, 37",
+         "simpleBehavior":{
+            "startingPressureToleranceAtLocation":100,
+            "startingPressureToleranceAtNeighbors":1,
+            "startingDivideRate":0.4,
+            "startingDeathRate":0.01,
+            "FoodConsumptionRate":1,
+            "FoodMaxStorage":100,
+            "FoodConcernLevel":70,
+            "MoveProbability":0.8,
+            "EnterPipeProbability":0.8,
+            "LeavePipeProbability":0.001,
+            "SurvivePipeProbability":1.0
+         },
+         "goBehavior":null,
+         "startingFood":20
+      }
+   ],
+   "FinalCellConfig":{
+      "startingPressureToleranceAtLocation":100,
+      "startingPressureToleranceAtNeighbors":1,
+      "startingDivideRate":0.3,
+      "startingDeathRate":0.02,
+      "FoodConsumptionRate":1,
+      "FoodMaxStorage":100,
+      "FoodConcernLevel":90,
+      "MoveProbability":0.0,
+      "EnterPipeProbability":0.0,
+      "LeavePipeProbability":0.0,
+      "SurvivePipeProbability":0.0
+   },
+
+
+   "goTermParams":null,
+
+   "SectorWidth":20,
+   "SectorHeight":20,
+   "SectorDepth":20,
+
+   "SectorPressureDistance":10,
+   "SectorPressureInitial":115,
+   "SectorPressureIncrement":50,
+
+   "PipePressureDistance":3,
+   "PipePressureInitial":0,
+   "PipePressureIncrement":50,
+
+   "MinimumCellToPipeRatio":0.035,
+   "MinPipeSizeForTravel":0.15,
+   "PipeStartingWidth":2,
+   "PipeRootOrientation":2,
+
+   "pipeParams":{
+      "location":"65, 1, 30",
+      "children":[
+         {
+            "location":"65, 5, 30",
+            "children":[
+               {
+                  "location":"30, 5, 30",
+                  "children":[
+                     {
+                        "location":"15, 20, 15",
+                        "children":[
+                           {
+                              "location":"15, 59, 15",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"15, 20, 25",
+                        "children":[
+                           {
+                              "location":"15, 59, 25",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"15, 20, 35",
+                        "children":[
+                           {
+                              "location":"15, 59, 35",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"15, 20, 45",
+                        "children":[
+                           {
+                              "location":"15, 59, 45",
+                              "children":null
+                           }
+                        ]
+                     },
+
+                     {
+                        "location":"25, 20, 15",
+                        "children":[
+                           {
+                              "location":"25, 59, 15",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"25, 20, 25",
+                        "children":[
+                           {
+                              "location":"25, 59, 25",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"25, 20, 35",
+                        "children":[
+                           {
+                              "location":"25, 59, 35",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"25, 20, 45",
+                        "children":[
+                           {
+                              "location":"25, 59, 45",
+                              "children":null
+                           }
+                        ]
+                     },
+
+                     {
+                        "location":"35, 20, 15",
+                        "children":[
+                           {
+                              "location":"35, 59, 15",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"35, 20, 25",
+                        "children":[
+                           {
+                              "location":"35, 59, 25",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"35, 20, 35",
+                        "children":[
+                           {
+                              "location":"35, 59, 35",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"35, 20, 45",
+                        "children":[
+                           {
+                              "location":"35, 59, 45",
+                              "children":null
+                           }
+                        ]
+                     },
+
+                     {
+                        "location":"45, 20, 15",
+                        "children":[
+                           {
+                              "location":"45, 59, 15",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"45, 20, 25",
+                        "children":[
+                           {
+                              "location":"45, 59, 25",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"45, 20, 35",
+                        "children":[
+                           {
+                              "location":"45, 59, 35",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"45, 20, 45",
+                        "children":[
+                           {
+                              "location":"45, 59, 45",
+                              "children":null
+                           }
+                        ]
+                     }
+                  ]
+               },
+
+               { 
+                  "location":"99, 5, 30",
+                  "children":[
+                     {
+                        "location":"84, 20, 15",
+                        "children":[
+                           {
+                              "location":"84, 59, 15",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"84, 20, 25",
+                        "children":[
+                           {
+                              "location":"84, 59, 25",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"84, 20, 35",
+                        "children":[
+                           {
+                              "location":"84, 59, 35",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"84, 20, 45",
+                        "children":[
+                           {
+                              "location":"84, 59, 45",
+                              "children":null
+                           }
+                        ]
+                     },
+
+                     {
+                        "location":"94, 20, 15",
+                        "children":[
+                           {
+                              "location":"94, 59, 15",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"94, 20, 25",
+                        "children":[
+                           {
+                              "location":"94, 59, 25",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"94, 20, 35",
+                        "children":[
+                           {
+                              "location":"94, 59, 35",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"94, 20, 45",
+                        "children":[
+                           {
+                              "location":"94, 59, 45",
+                              "children":null
+                           }
+                        ]
+                     },
+
+                     {
+                        "location":"104, 20, 15",
+                        "children":[
+                           {
+                              "location":"104, 59, 15",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"104, 20, 25",
+                        "children":[
+                           {
+                              "location":"104, 59, 25",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"104, 20, 35",
+                        "children":[
+                           {
+                              "location":"104, 59, 35",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"104, 20, 45",
+                        "children":[
+                           {
+                              "location":"104, 59, 45",
+                              "children":null
+                           }
+                        ]
+                     },
+
+                     {
+                        "location":"114, 20, 15",
+                        "children":[
+                           {
+                              "location":"114, 59, 15",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"114, 20, 25",
+                        "children":[
+                           {
+                              "location":"114, 59, 25",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"114, 20, 35",
+                        "children":[
+                           {
+                              "location":"114, 59, 35",
+                              "children":null
+                           }
+                        ]
+                     },
+                     {
+                        "location":"114, 20, 45",
+                        "children":[
+                           {
+                              "location":"114, 59, 45",
+                              "children":null
+                           }
+                        ]
+                     }
+                  ]
+               }
+            ]
+         }
+      ]
+   }
+
+}

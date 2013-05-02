@@ -160,6 +160,7 @@ namespace Hades3
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteFont = Content.Load<SpriteFont>("hudFont");
+
         }
 
         /// <summary>
@@ -172,6 +173,8 @@ namespace Hades3
             simulationBorderEffect.VertexColorEnabled = true;
 
             loadFont();
+
+            Console.WriteLine("le content directory! " + Content.RootDirectory.ToString());
         }
 
         /// <summary>
@@ -195,7 +198,7 @@ namespace Hades3
 
         private SimulationParameters readParamsFromFile(String fileName)
         {
-            String paramDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + @"\Visual Studio 2010\Projects\Hades3\Hades3\Hades3\JSONParams\";
+            String paramDirectory = "Content\\";
             fileName = paramDirectory + fileName;
             StringBuilder sb = new StringBuilder();
             using (StreamReader sr = new StreamReader(fileName))
