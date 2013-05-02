@@ -1,0 +1,80 @@
+﻿separate logic in SimulationCore.Draw() into separate, smaller methods.
+
+add growthRange to bloodvessels
+
+make traveling through blood vessels.
+
+remove magic numbers
+
+space bar vs. start/stop buttons
+
+
+
+
+Check for tissue collision upon creation
+
+fix possible memory leak that might happen when cell is deleted
+
+make move a boolean, mutateable, behavior
+
+reintroduce orbit camera
+
+
+
+
+
+
+
+
+
+
+
+
+#old
+
+re-introduce sectors to handle angiogenesis...
+sector size... 1 parameter for cube sectors: sectorWidth
+
+alternative to sector-based angiogenesis...
+every x turns, cell does the following:
+	find closest endothelial cell -- search through all (or can do every 2 or 3 for optimization) endothelial cells in sector.
+		shouldn't be more than a couple hundred
+	determine path from endothelial cell to the cell, path shouldn't be more than 100 units long
+	while searching for path, count the number of cells along the path, if greater than certain number then request additional pipe
+
+cell needs to keep track of
+	closest pipe section (endothelial cell)
+	path from this pipe to the cell
+
+subroutines required
+	EndothelialCell findClosestEndothelialCellTo(Vector3 location);
+	Path findPath(Vector3 location1, Vector3 location2);
+	int countCellsAlongPath(Path p);
+
+environment keeps track of all endothelial cells within each sector, and between sectors.
+these cells are kept in a linked list (technically a tree because each cell can have more than 1 child)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+for(int x=0; x<secondCorner.x; x++){
+	for(int y=0; y<secondCorner.y; y++){
+		for(int z=0; z<secondCorner.z; z++){
+			
+		}
+	}
+}

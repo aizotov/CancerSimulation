@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{82FAE488-F0DE-4AA5-93E5-0E0DA2A5C47C}</ProjectGuid>
+    <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hades3</RootNamespace>
+    <AssemblyName>Hades3</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <XnaPlatform>Windows</XnaPlatform>
+    <XnaProfile>HiDef</XnaProfile>
+    <XnaCrossPlatformGroupID>5670fc57-fd8a-4b10-bf85-a80c35fe5192</XnaCrossPlatformGroupID>
+    <XnaOutputType>Game</XnaOutputType>
+    <ApplicationIcon>Game.ico</ApplicationIcon>
+    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>false</XnaCompressContent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>true</XnaCompressContent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DynamicDataDisplay">
+      <HintPath>..\..\..\..\3rdPartyLibraries\DynamicDataDisplay\DynamicDataDisplay\DynamicDataDisplay.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Video, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Avatar, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\extensions\JSON.NET\Bin\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="3DModel\CubePrimitive.cs" />
+    <Compile Include="3DModel\GeometricPrimitive.cs" />
+    <Compile Include="3DModel\RectangleOverlay.cs" />
+    <Compile Include="3DModel\VertexPositionNormal.cs" />
+    <Compile Include="Camera\Camera.cs" />
+    <Compile Include="Camera\CameraComponent.cs" />
+    <Compile Include="Camera\ICamera.cs" />
+    <Compile Include="CellBehaviors\CellBehavior.cs" />
+    <Compile Include="CellBehaviors\BehaviorAggregate.cs" />
+    <Compile Include="CellBehaviors\DivideBehavior.cs" />
+    <Compile Include="CellBehaviors\GOBehaviors\GOBehaviorAggregate.cs" />
+    <Compile Include="CellBehaviors\GOBehaviors\GOCellBehavior.cs" />
+    <Compile Include="CellBehaviors\GOBehaviors\GODivide.cs" />
+    <Compile Include="CellBehaviors\PressureTolerance.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimpleBehaviorAggregate.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimpleCellBehavior.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimpleDeathBehavior.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimpleDivide.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimpleFoodConcernLevel.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimpleFoodConsumptionRate.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimpleFoodMaxStorage.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimpleMove.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimplePipeEnter.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimplePipeLeave.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimplePipeSurvival.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimplePressureToleranceAtLocation.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimplePressureToleranceAtNeighbors.cs" />
+    <Compile Include="Cells\BlastCell.cs" />
+    <Compile Include="Cells\Cell.cs" />
+    <Compile Include="Cells\EndothelialCell.cs" />
+    <Compile Include="Cells\FinalCell.cs" />
+    <Compile Include="Cells\TissueCell.cs" />
+    <Compile Include="CirculatorySystem.cs" />
+    <Compile Include="Environment.cs" />
+    <Compile Include="Experiment.cs" />
+    <Compile Include="CellBehaviors\GOBehaviors\GOTerm.cs" />
+    <Compile Include="LocationContents.cs" />
+    <Compile Include="Mutation.cs" />
+    <Compile Include="PipeTravelInfo.cs" />
+    <Compile Include="PossibleChild.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="Sector.cs" />
+    <Compile Include="Signals\PeriodicSignal.cs" />
+    <Compile Include="Signals\PleaseMoveSignal.cs" />
+    <Compile Include="Signals\Signal.cs" />
+    <Compile Include="Signals\SignalWave.cs" />
+    <Compile Include="SimulationCore.cs" />
+    <Compile Include="SimulationParameters.cs" />
+    <Compile Include="Tissue.cs" />
+    <Compile Include="UI\ExperimentCreationWindow.xaml.cs">
+      <DependentUpon>ExperimentCreationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GrowingPipe.cs" />
+    <Compile Include="UI\UIWindow.xaml.cs">
+      <DependentUpon>UIWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UtilityMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Game.ico" />
+    <Content Include="GameThumbnail.png" />
+    <Content Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hades3Content\Hades3Content.contentproj">
+      <Name>Hades3Content</Name>
+      <XnaReferenceType>Content</XnaReferenceType>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Xna.Framework.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UI\ExperimentCreationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UIWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <!--
+      To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+    -->
+</Project>
