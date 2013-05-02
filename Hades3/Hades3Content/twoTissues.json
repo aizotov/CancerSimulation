@@ -18,15 +18,13 @@
    "CameraEye":"65, 119.4, 120.2",
    "CameraLookAt":"65, 25, 25",
 
-   "wtf is going on":"Eh?"
-
    "behaviorType":0,
 
    "cellParameters":{
-      "MaxPressureToleranceAtLocation":1500,
+      "MaxPressureToleranceAtLocation":800,
       "MinPressureToleranceAtLocation":1,
 
-      "MaxPressureToleranceAtNeighbors": 1500,
+      "MaxPressureToleranceAtNeighbors": 800,
       "MinPressureToleranceAtLocation":1,
 
       "MaxFoodConsumptionRate":10,
@@ -35,6 +33,9 @@
       "MinFoodStorage":50,
       "MaxFoodConcernLevel":95,
       "MinFoodConcernLevel":10,
+
+	  "BlastCellDivideIntoBlastProbability":0.2,
+	  "BlastCellDivideIntoFinalProbability":0.8,
 
       "BlastCellMutationProbability":0.0,
       "BlastCellRepairProbability":0.0,

@@ -278,11 +278,6 @@ namespace Hades3
             runningSimulation = false;
         }
 
-        public void AcceptExperiment(Experiment e)
-        {
-            //TODO
-        }
-
         public void AcceptMutationBlueprint(List<Mutation> newMutationList)
         {
             Console.WriteLine("accepting...");
@@ -333,10 +328,12 @@ namespace Hades3
         {
             allowMovement = !allowMovement;
 
+            /*
             if (allowMovement)
                 camera.ClickAndDragMouseRotation = false;
             else
                 camera.ClickAndDragMouseRotation = true;
+             * */
         }
 
         #endregion
@@ -393,12 +390,14 @@ namespace Hades3
             }
         }
 
+        private long tickCounter = 0;
         private void updateGraphs()
         {
-            uiWindow.UpdateNumberFinalOfCells(environment.FinalCellTotal);
-            uiWindow.UpdateNumberOfBlastCells(environment.BlastCellTotal);
-            uiWindow.UpdateNumberOfMutations(environment.MutatedCellTotal);
-            uiWindow.UpdateNumberOfPipes(CirculatorySystem.Instance.PipeCells.Count);
+            uiWindow.UpdateNumberFinalOfCells(environment.FinalCellTotal, tickCounter);
+            uiWindow.UpdateNumberOfBlastCells(environment.BlastCellTotal, tickCounter);
+            uiWindow.UpdateNumberOfMutations(environment.MutatedCellTotal, tickCounter);
+            uiWindow.UpdateNumberOfPipes(CirculatorySystem.Instance.PipeCells.Count, tickCounter);
+            tickCounter++;
         }
 
         /// <summary>

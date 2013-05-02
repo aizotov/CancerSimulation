@@ -172,15 +172,21 @@ namespace Hades3
             throw new NotImplementedException();
         }
 
-        public override void ApplyMutation(Mutation m)
+        private void applyMutation(Mutation m)
         {
             switch (m.behavior)
             {
-                case BehaviorKind.DeathProbability:
-                    deathBehavior.MutateTo(m.value);
-                    break;
                 case BehaviorKind.DivisionProbability:
                     divideBehavior.MutateTo(m.value);
+                    Console.WriteLine("new division probability: " + divideBehavior.CurrValue);
+                    break;
+                case BehaviorKind.DeathProbability:
+                    deathBehavior.MutateTo(m.value);
+                    Console.WriteLine("new death probability: " + deathBehavior.CurrValue);
+                    break;
+                case BehaviorKind.MoveProbability:
+                    moveAbility.MutateTo(m.value);
+                    Console.WriteLine("new move probability: " + moveAbility.CurrValue);
                     break;
                 case BehaviorKind.PressureToleranceAtLocation:
                     pressureToleranceAtLocation.MutateTo(m.value);
@@ -195,5 +201,13 @@ namespace Hades3
             }
         }
 
+        public override void ApplyMutations(List<Mutation> mutationList)
+        {
+            foreach (Mutation m in mutationList)
+            {
+                applyMutation(m);
+            }
+            Console.WriteLine("\n");
+        }
     }
 }

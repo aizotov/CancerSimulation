@@ -46,7 +46,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Name="experimentPanel">
-            <Button Name="experimentCreateButton" Content="create experiment" Click="experimentCreateButton_Click" />
+            <Button Name="mutationCreationButton" Content="create mutation" Click="experimentCreateButton_Click" />
         </StackPanel>
        
         <!--

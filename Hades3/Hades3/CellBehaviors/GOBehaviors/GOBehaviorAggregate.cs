@@ -124,12 +124,7 @@ namespace Hades3
             throw new NotImplementedException();
         }
 
-        //public override BehaviorAggregate GetClone()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        public override void ApplyMutation(Mutation m)
+        public override void ApplyMutations(List<Mutation> m)
         {
             throw new NotImplementedException();
         }

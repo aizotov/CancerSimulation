@@ -8,6 +8,9 @@ namespace Hades3
 {
     public class BlastCell : TissueCell
     {
+        private static double MakeBlastCellProbability;
+        private static double MakeFinalCellProbability;
+
         public BlastCell(Vector3 position, SimulationParameters.SimpleBehaviorParam behaviorConfig, int startingFood) : base(position, startingFood)
         {
             cellBehaviors = new SimpleBehaviorAggregate(behaviorConfig);
@@ -31,7 +34,6 @@ namespace Hades3
             checkChildProbabilities(this);
         }
 
-
         public BlastCell(TissueCell parentCell) : base(parentCell)
         {
             cellBehaviors = new SimpleBehaviorAggregate((SimpleBehaviorAggregate)parentCell.CellBehaviors);
@@ -39,12 +41,20 @@ namespace Hades3
             initializeBlastCell();
         }
 
+        public static void InitializeDivideProbabilities(double blastProb, double finalProb)
+        {
+            if (blastProb + finalProb != 1.0)
+                throw new Exception("blast cell divide probabilities must equal 1");
+
+            MakeBlastCellProbability = blastProb;
+            MakeFinalCellProbability = finalProb;
+
+        }
 
         private void initializeBlastCell()
         {
-            AddChildChoice<BlastCell>(0.2);
-            AddChildChoice<FinalCell>(0.8);
-            //AddChildChoice<BlastCell>(1);
+            AddChildChoice<BlastCell>(MakeBlastCellProbability);
+            AddChildChoice<FinalCell>(MakeFinalCellProbability);
         }
 
       

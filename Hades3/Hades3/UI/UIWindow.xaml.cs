@@ -24,7 +24,7 @@ namespace Hades3
     /// 
     public partial class UIWindow : Window
     {
-        ExperimentCreationWindow experimentCreationWindow;
+        MutationCreationWindow mutationCreationWindow;
 
         ComboBoxItem selectedConfiguration;
 
@@ -33,12 +33,7 @@ namespace Hades3
         private ObservableDataSource<Point> mutationCountDataSource;
         private ObservableDataSource<Point> bloodVesselCountCountDataSource;
 
-        private int finalCellNumberGraphTimeCounter = 0;
-        private int blastCellNumberGraphTimeCounter = 0;
-        private int mutationNumberGraphTimeCounter = 0;
-        private int bloodVesselNumberGraphTimeCounter = 0;
-
-        private Dictionary<Button, Experiment> experimentButtonMapping;
+        private Dictionary<Button, List<Mutation>> mutationButtonMapping;
 
         private Dictionary<ComboBoxItem, Type> startConfigChoices;
 
@@ -48,7 +43,7 @@ namespace Hades3
 
             InitializeComponent();
 
-            experimentButtonMapping = new Dictionary<Button, Experiment>();
+            mutationButtonMapping = new Dictionary<Button, List<Mutation>>();
 
             startConfigChoices = new Dictionary<ComboBoxItem, Type>();
             IEnumerable<String> paramFileNames = Directory.EnumerateFiles("Content");          
@@ -81,32 +76,36 @@ namespace Hades3
             bloodVesselCount.LegendVisible = false;
 
             stopSimulationButton.IsEnabled = false;
-            experimentCreateButton.IsEnabled = false;
+            mutationCreationButton.IsEnabled = false;
         }
 
-        public void UpdateNumberFinalOfCells(int cellNumber)
+        #region updateGraphs
+
+        public void UpdateNumberFinalOfCells(int cellNumber, long timeStep)
         {
-            Point p = new Point(finalCellNumberGraphTimeCounter++, cellNumber);
+            Point p = new Point(timeStep, cellNumber);
             finalCellNumberDataSource.AppendAsync(Dispatcher, p);
         }
 
-        public void UpdateNumberOfBlastCells(int cellNumber)
+        public void UpdateNumberOfBlastCells(int cellNumber, long timeStep)
         {
-            Point p = new Point(blastCellNumberGraphTimeCounter++, cellNumber);
+            Point p = new Point(timeStep, cellNumber);
             blastCellNumberDataSource.AppendAsync(Dispatcher, p);
         }
 
-        public void UpdateNumberOfMutations(int mutationNumber)
+        public void UpdateNumberOfMutations(int mutationNumber, long timeStep)
         {
-            Point p = new Point(mutationNumberGraphTimeCounter++, mutationNumber);
+            Point p = new Point(timeStep, mutationNumber);
             mutationCountDataSource.AppendAsync(Dispatcher, p);
         }
 
-        public void UpdateNumberOfPipes(int hungryCellNumber)
+        public void UpdateNumberOfPipes(int hungryCellNumber, long timeStep)
         {
-            Point p = new Point(bloodVesselNumberGraphTimeCounter++, hungryCellNumber);
+            Point p = new Point(timeStep, hungryCellNumber);
             bloodVesselCountCountDataSource.AppendAsync(Dispatcher, p);
         }
+
+        #endregion
 
         public void ResetStartSimulationButton()
         {
@@ -122,12 +121,7 @@ namespace Hades3
             mutationCountDataSource.Collection.Clear();
             bloodVesselCountCountDataSource.Collection.Clear();
 
-            blastCellNumberGraphTimeCounter = 0;
-            finalCellNumberGraphTimeCounter = 0;
-            mutationNumberGraphTimeCounter = 0;
-            bloodVesselNumberGraphTimeCounter = 0;
-
-            experimentCreateButton.IsEnabled = true;
+            mutationCreationButton.IsEnabled = true;
             startSimulationButton.IsEnabled = false;
             startConfigurationComboBox.IsEnabled = false;
             stopSimulationButton.IsEnabled = true;
@@ -167,40 +161,51 @@ namespace Hades3
 
         private void experimentCreateButton_Click(object sender, RoutedEventArgs e)
         {
-            experimentCreationWindow = new ExperimentCreationWindow(this);
-            ElementHost.EnableModelessKeyboardInterop(experimentCreationWindow);
-            experimentCreationWindow.Show();
+            mutationCreationWindow = new MutationCreationWindow(this);
+            ElementHost.EnableModelessKeyboardInterop(mutationCreationWindow);
+            mutationCreationWindow.Show();
         }
 
-        public void CreateExperiment(Experiment newExperiment)
+        //public void CreateExperiment(Experiment newExperiment)
+        //{
+        //    Button newButton = new Button();
+        //    newButton.Content = newExperiment.Name;
+        //    newButton.MinHeight = 50;
+        //    newButton.MinWidth = 50;
+        //    newButton.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+        //    newButton.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+        //    experimentButtonMapping.Add(newButton, newExperiment);
+        //    newButton.Click += delegate(Object sender, RoutedEventArgs e)
+        //    {
+        //        Experiment myExperiment = experimentButtonMapping[(Button)sender];
+        //        Console.WriteLine("starting experiment: " + myExperiment.Name);
+        //        SimulationCore.Instance.accept
+        //        SimulationCore.Instance.AcceptExperiment(myExperiment);
+        //    };
+
+        //    experimentPanel.Children.Add(newButton);
+        //}
+        int counter = 1;
+        public void CreateMutationButton(List<Mutation> mutations, string mutationName)
         {
             Button newButton = new Button();
-            newButton.Content = newExperiment.Name;
+            newButton.Content = mutationName;
             newButton.MinHeight = 50;
             newButton.MinWidth = 50;
             newButton.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
             newButton.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-            experimentButtonMapping.Add(newButton, newExperiment);
+            mutationButtonMapping.Add(newButton, mutations);
+
             newButton.Click += delegate(Object sender, RoutedEventArgs e)
             {
-                Experiment myExperiment = experimentButtonMapping[(Button)sender];
-                Console.WriteLine("starting experiment: " + myExperiment.Name);
-                SimulationCore.Instance.AcceptExperiment(myExperiment);
+                List<Mutation> theMutationList = mutationButtonMapping[(Button)sender];
+                Console.WriteLine("just pushed a button for this!");
+                foreach (Mutation m in mutations)
+                    Console.WriteLine(m.ToString());
+                SimulationCore.Instance.AcceptMutationBlueprint(theMutationList);
             };
 
             experimentPanel.Children.Add(newButton);
-        }
-
-        public void CreateMutationBlueprint(List<Mutation> mutations)
-        {
-            Console.WriteLine("created mutation blueprint!");
-            foreach (Mutation m in mutations)
-            {
-                Console.WriteLine(m.behavior + "  :  " + m.value);
-            }
-            Console.WriteLine("\n");
-
-            SimulationCore.Instance.AcceptMutationBlueprint(mutations);
         }
 
         private void stopSimulationButton_Click(object sender, RoutedEventArgs e)
@@ -208,7 +213,7 @@ namespace Hades3
             SimulationCore.Instance.StopSimulation();
             ResetStartSimulationButton();
             stopSimulationButton.IsEnabled = false;
-            experimentCreateButton.IsEnabled = false;
+            mutationCreationButton.IsEnabled = false;
         }
 
         private void drawSimulationTextBox_Checked(object sender, RoutedEventArgs e)

@@ -7,8 +7,8 @@ namespace Hades3
 {
     public class SimpleFoodConcern : SimpleCellBehavior
     {
-        public static double MaxValue;
-        public static double MinValue;
+        public static int MaxValue;
+        public static int MinValue;
 
         public SimpleFoodConcern(double startingValue) : base(startingValue)
         {

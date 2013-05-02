@@ -169,8 +169,8 @@
     <Compile Include="SimulationCore.cs" />
     <Compile Include="SimulationParameters.cs" />
     <Compile Include="Tissue.cs" />
-    <Compile Include="UI\ExperimentCreationWindow.xaml.cs">
-      <DependentUpon>ExperimentCreationWindow.xaml</DependentUpon>
+    <Compile Include="UI\MutationCreationWindow.xaml.cs">
+      <DependentUpon>MutationCreationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GrowingPipe.cs" />
     <Compile Include="UI\UIWindow.xaml.cs">
@@ -217,7 +217,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\ExperimentCreationWindow.xaml">
+    <Page Include="UI\MutationCreationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

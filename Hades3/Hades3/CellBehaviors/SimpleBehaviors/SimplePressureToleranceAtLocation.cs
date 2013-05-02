@@ -7,8 +7,8 @@ namespace Hades3
 {
     class SimplePressureToleranceAtLocation : SimpleCellBehavior
     {
-        public static double MaxValue;
-        public static double MinValue;
+        public static int MaxValue;
+        public static int MinValue;
 
         public SimplePressureToleranceAtLocation(double startingValue) : base(startingValue)
         {

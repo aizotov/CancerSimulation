@@ -1,0 +1,30 @@
+﻿<Window x:Class="Hades3.MutationCreationWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="ExperimentCreationWindow" Width="300" ResizeMode="CanResize" SizeToContent="Height">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <StackPanel>
+                <Button Name="divisionRateMutationButton" Content="divide probability" Click="divisionRateMutationButton_Click"></Button>
+                <Button Name="selfDeathMutationButton" Content="death probability" Click="selfDeathMutationButton_Click"></Button>
+                <Button Name="moveProbabilityButton" Content="move probability" Click="moveProbabilityButton_Click"></Button>
+                <Button Name="enterPipeMutationButton" Content="enter pipe probability" Click="enterPipeMutationButton_Click"></Button>
+                <Button Name="exitPipeMutationButton" Content="exit pipe probability" Click="exitPipeMutationButton_Click"></Button>
+                <Button Name="survivePipeMutationButton" Content="survive pipe probability" Click="survivePipeMutationButton_Click"></Button>
+                <Button Name="pressureToleranceAtLocationMutationButton" Content="pressure tolerance at location" Click="pressureToleranceAtLocationMutationButton_Click"></Button>
+                <Button Name="pressureToleranceAtNeighborsMutationButton" Content="pressure tolerance at neighbors" Click="pressureToleranceAtNeighborsMutationButton_Click"></Button>
+                <Button Name="foodConsumptionRateMutationButton" Content="food consumption rate" Click="foodConsumptionRateMutationButton_Click"></Button>
+                <Button Name="foodMaxStorageMutationButton" Content="food max storage" Click="foodMaxStorageMutationButton_Click"></Button>
+                <Button Name="foodConcernLevelMutationButton" Content="food concern level" Click="foodConcernLevelMutationButton_Click"></Button>
+
+                <StackPanel Name="mutationList" MinHeight="100">
+                </StackPanel>
+
+                <Label Content="mutation name:"></Label>
+                <TextBox Name="mutationNameTextBox" Height="25"></TextBox>
+
+                <Button Name="createExperimentButton" Content="create mutation!" Click="createExperimentButton_Click"></Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

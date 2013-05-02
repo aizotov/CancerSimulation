@@ -559,33 +559,7 @@ namespace Hades3
             previousMouseState = currentMouseState;
             currentMouseState = Mouse.GetState();
 
-            if (clickAndDragMouseRotation)
-            {
-                int deltaX = 0;
-                int deltaY = 0;
-
-                if (currentMouseState.LeftButton == ButtonState.Pressed)
-                {
-                    switch (CurrentBehavior)
-                    {
-                        case Camera.Behavior.FirstPerson:
-                        case Camera.Behavior.Spectator:
-                        case Camera.Behavior.Flight:
-                            deltaX = previousMouseState.X - currentMouseState.X;
-                            deltaY = previousMouseState.Y - currentMouseState.Y;
-                            break;
-
-                        case Camera.Behavior.Orbit:
-                            deltaX = currentMouseState.X - previousMouseState.X;
-                            deltaY = currentMouseState.Y - previousMouseState.Y;
-                            break;
-                    }
-
-                    PerformMouseFiltering((float)deltaX, (float)deltaY);
-                    PerformMouseSmoothing(smoothedMouseMovement.X, smoothedMouseMovement.Y);
-                }
-            }
-            else
+            if (SimulationCore.Instance.AllowMovement)
             {
                 Rectangle clientBounds = Game.Window.ClientBounds;
 
@@ -599,6 +573,47 @@ namespace Hades3
                 PerformMouseFiltering((float)deltaX, (float)deltaY);
                 PerformMouseSmoothing(smoothedMouseMovement.X, smoothedMouseMovement.Y);
             }
+
+            //if (clickAndDragMouseRotation)
+            //{
+            //    int deltaX = 0;
+            //    int deltaY = 0;
+
+            //    if (currentMouseState.LeftButton == ButtonState.Pressed)
+            //    {
+            //        switch (CurrentBehavior)
+            //        {
+            //            case Camera.Behavior.FirstPerson:
+            //            case Camera.Behavior.Spectator:
+            //            case Camera.Behavior.Flight:
+            //                deltaX = previousMouseState.X - currentMouseState.X;
+            //                deltaY = previousMouseState.Y - currentMouseState.Y;
+            //                break;
+
+            //            case Camera.Behavior.Orbit:
+            //                deltaX = currentMouseState.X - previousMouseState.X;
+            //                deltaY = currentMouseState.Y - previousMouseState.Y;
+            //                break;
+            //        }
+
+            //        PerformMouseFiltering((float)deltaX, (float)deltaY);
+            //        PerformMouseSmoothing(smoothedMouseMovement.X, smoothedMouseMovement.Y);
+            //    }
+            //}
+            //else
+            //{
+            //    Rectangle clientBounds = Game.Window.ClientBounds;
+
+            //    int centerX = clientBounds.Width / 2;
+            //    int centerY = clientBounds.Height / 2;
+            //    int deltaX = centerX - currentMouseState.X;
+            //    int deltaY = centerY - currentMouseState.Y;
+
+            //    //Mouse.SetPosition(centerX, centerY);
+
+            //    PerformMouseFiltering((float)deltaX, (float)deltaY);
+            //    PerformMouseSmoothing(smoothedMouseMovement.X, smoothedMouseMovement.Y);
+            //}
         }
 
         /// <summary>

@@ -30,6 +30,9 @@
       "MaxFoodConcernLevel":95,
       "MinFoodConcernLevel":10,
 
+	  "BlastCellDivideIntoBlastProbability":0.2,
+	  "BlastCellDivideIntoFinalProbability":0.8,
+
       "BlastCellMutationProbability":0.0,
       "BlastCellRepairProbability":0.0,
       "BlastCellColor":"255, 0, 0, 255",

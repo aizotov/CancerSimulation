@@ -239,15 +239,12 @@ namespace Hades3
         public void AcceptMutations(List<Mutation> mutations)
         {
             Console.WriteLine("cell has acccepted [" + mutations.Count + "] mutations");
-            foreach (Mutation m in mutations)
+            cellBehaviors.ApplyMutations(mutations);
+            if (Mutated == false)
             {
-                Console.WriteLine(m.ToString());
-                cellBehaviors.ApplyMutation(m);
-
-                Mutated = true; // this should be like if mutations.count!=0 or something
+                Mutated = true;
                 Environment.Instance.MutatedCellTotal++;
             }
-            Console.WriteLine("");
         }
 
         private bool getPushed()

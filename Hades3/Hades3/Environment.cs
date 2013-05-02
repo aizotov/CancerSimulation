@@ -146,6 +146,7 @@ namespace Hades3
 
             Console.WriteLine("initializing cells");
             Console.WriteLine("behavior: " + simulationParams.behaviorType);
+            BlastCell.InitializeDivideProbabilities(simulationParams.cellParameters.BlastCellDivideIntoBlastProbability, simulationParams.cellParameters.BlastCellDivideIntoFinalProbability);
             initializeCells(simulationParams.startingCells, simulationParams.behaviorType);
         }
 
