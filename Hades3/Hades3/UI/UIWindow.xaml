@@ -34,7 +34,6 @@
             <StackPanel Orientation="Vertical">
                 <Button Height="50" Width="100" Content="Start Simulation" Click="startSimulation_Click" Name="startSimulationButton"></Button>
                 <ComboBox Name="startConfigurationComboBox" SelectionChanged="startConfigurationComboBox_SelectionChanged"></ComboBox>
-                <!-- <TextBox Name="startingNumberTextBox" Text="1" /> -->
 
                 <CheckBox Content="draw simulation"     Name="drawSimulationTextBox"    IsChecked="True" Checked="drawSimulationTextBox_Checked"    Unchecked="drawSimulationTextBox_Unchecked"     />
                 <CheckBox Content="hide legend"         Name="hideLegendCheckBox"       IsChecked="True" Checked="hideLegendCheckBox_Checked"       Unchecked="hideLegendCheckBox_Unchecked"        />
@@ -48,7 +47,6 @@
 
         <StackPanel Grid.Column="1" Name="experimentPanel">
             <Button Name="experimentCreateButton" Content="create experiment" Click="experimentCreateButton_Click" />
-            <Slider Name="utilitySlider" ValueChanged="utilitySlider_ValueChanged" Minimum="1" Maximum="50" Value="10" UseLayoutRounding="True"></Slider>
         </StackPanel>
        
         <!--

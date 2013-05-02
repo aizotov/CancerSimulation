@@ -51,31 +51,14 @@ namespace Hades3
             experimentButtonMapping = new Dictionary<Button, Experiment>();
 
             startConfigChoices = new Dictionary<ComboBoxItem, Type>();
-            IEnumerable<String> paramFileNames = Directory.EnumerateFiles(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + @"\Visual Studio 2010\Projects\Hades3\Hades3\Hades3\JSONParams\");
+            IEnumerable<String> paramFileNames = Directory.EnumerateFiles("JSONParams");
 
-            Console.WriteLine("here are the param files...");
             foreach (String f in paramFileNames)
             {
                 ComboBoxItem newItem = new ComboBoxItem();
-                //newItem.Name = "blah";
                 newItem.Content = System.IO.Path.GetFileName(f);
                 startConfigurationComboBox.Items.Add(newItem);
             }
-
-            /*
-            ComboBoxItem finalCellStart = new ComboBoxItem();
-            finalCellStart.Name = "finalCellStart";
-            finalCellStart.Content = "final cell start";
-            startConfigurationComboBox.Items.Add(finalCellStart);
-            startConfigChoices.Add(finalCellStart, typeof(FinalCell));
-            ComboBoxItem blastCellStart = new ComboBoxItem();
-            blastCellStart.Name = "blastCellStart";
-            blastCellStart.Content = "blast cell start";
-            startConfigurationComboBox.Items.Add(blastCellStart);
-            startConfigChoices.Add(blastCellStart, typeof(BlastCell));
-             * */
-
-            //startConfigurationComboBox.SelectedItem = blastCellStart;
 
             finalCellNumberDataSource = new ObservableDataSource<Point>();
             finalCellNumberDataSource.SetXYMapping(p => p);
@@ -96,8 +79,7 @@ namespace Hades3
             bloodVesselCount.LegendVisible = false;
 
             stopSimulationButton.IsEnabled = false;
-            //experimentCreateButton.IsEnabled = false;
-
+            experimentCreateButton.IsEnabled = false;
         }
 
         public void UpdateNumberFinalOfCells(int cellNumber)
@@ -275,12 +257,6 @@ namespace Hades3
             cellCount.LegendVisible = true;
             mutationCount.LegendVisible = true;
             bloodVesselCount.LegendVisible = true;
-        }
-
-        private void utilitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            Console.WriteLine("new value [" + e.NewValue + "]");
-            SimulationCore.Instance.SelectionDistance = (int)e.NewValue;
         }
 
         private void drawPressureCheckBox_Checked(object sender, RoutedEventArgs e)

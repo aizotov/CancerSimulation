@@ -19,12 +19,6 @@ namespace Hades3
     /// </summary>
     public partial class ExperimentCreationWindow : Window
     {
-        //Experiment theExperiment;
-        //List<Experiment.GeneType> mutations;
-
-        //Dictionary<ListBoxItem, Experiment.Selection> selectionMapping;
-        //Dictionary<ListBoxItem, Experiment.GeneType> mutationMapping;
-
         UIWindow parentWindow;
 
         Dictionary<BehaviorKind, double> behaviorValueMap;
@@ -37,114 +31,16 @@ namespace Hades3
 
             mutations = new List<Mutation>();
             behaviorValueMap = new Dictionary<BehaviorKind, double>();
-
-            /*
-            selectionMapping = new Dictionary<ListBoxItem, Experiment.Selection>();
-            mutationMapping = new Dictionary<ListBoxItem, Experiment.GeneType>();
-
-            
-
-            //List<ComboBoxItem> cboxItems = new List<ComboBoxItem>();
-
-            ComboBoxItem selectAll = new ComboBoxItem();
-            selectAll.Content = "select all";
-            selectAll.Name = "selectAll";
-            cellSelectionComboBox.Items.Add(selectAll);
-            selectionMapping.Add(selectAll, Experiment.Selection.All);
-
-            ComboBoxItem selectAllBlast = new ComboBoxItem();
-            selectAllBlast.Content = "select all blast cells";
-            cellSelectionComboBox.Items.Add(selectAllBlast);
-            selectionMapping.Add(selectAllBlast, Experiment.Selection.AllBlast);
-
-            ComboBoxItem selectAllFinal = new ComboBoxItem();
-            selectAllFinal.Content = "select all final cells";
-            cellSelectionComboBox.Items.Add(selectAllFinal);
-            selectionMapping.Add(selectAllFinal, Experiment.Selection.AllFinal);
-
-            ComboBoxItem selectOneBlast = new ComboBoxItem();
-            selectOneBlast.Content = "select one blast cell";
-            cellSelectionComboBox.Items.Add(selectOneBlast);
-            selectionMapping.Add(selectOneBlast, Experiment.Selection.OneBlast);
-
-            ComboBoxItem selectOneFinal = new ComboBoxItem();
-            selectOneFinal.Content = "select one final cell";
-            cellSelectionComboBox.Items.Add(selectOneFinal);
-            selectionMapping.Add(selectOneFinal, Experiment.Selection.OneFinal);
-
-            cellSelectionComboBox.SelectedItem = selectAll;
-
-            Console.WriteLine("there are " + cellSelectionComboBox.Items.Count + " items in the combobox");
-             * */
-
-            //mutations = new List<Experiment.GeneType>();
         }
-
-        /*
-        private void spaceToleranceMutationButton_Click(object sender, RoutedEventArgs e)
-        {
-            ListBoxItem newMutation = new ListBoxItem();
-            newMutation.Content = "space tolerance";
-            mutationList.Children.Add(newMutation);
-            mutations.Add(Experiment.GeneType.SpaceTolerance);
-            spaceToleranceMutationButton.IsEnabled = false;
-        }
-         * */
-
-        /*
-        private void selfRepairMutationButton_Click(object sender, RoutedEventArgs e)
-        {
-            ListBoxItem newMutation = new ListBoxItem();
-            newMutation.Content = "self repair";
-            mutationsListBox.Items.Add(newMutation);
-            mutations.Add(Experiment.GeneType.SelfRepair);
-            selfRepairMutationButton.IsEnabled = false;
-        }
-         * */
-
-        
 
         private void createExperimentButton_Click(object sender, RoutedEventArgs e)
         {
-
-            /*
-            foreach (Mutation m in mutations)
-            {
-                mutations.Add(new Mutation(m.behavior, behaviorValueMap[m.behavior]));
-            }
-             * */
-            
-
             foreach(BehaviorKind m in behaviorValueMap.Keys)
             {
                 mutations.Add(new Mutation(m, behaviorValueMap[m]));
             }
             parentWindow.CreateMutationBlueprint(mutations);
             mutations.Clear();
-            
-            /*
-            Experiment.Selection select = selectionMapping[(ListBoxItem)cellSelectionComboBox.SelectedItem];
-
-            if (mutations.Count == 0)
-            {
-                MessageBox.Show("invalid mutation selection");
-                return;
-            }
-
-            int mutationValue;
-            int.TryParse(modifierValueTextBox.Text, out mutationValue);
-            if (mutationValue == 0)
-            {
-                MessageBox.Show("invalid mutation modifier");
-                return;
-            }
-
-            string experimentName = experimentNameTextBox.Text;
-
-            theExperiment = new Experiment(select, mutations, mutationValue, experimentName);
-            Console.WriteLine("Created experiment. Selection: " + select + ", mutations: " + mutations.ToString() + ", mutate by: " + mutationValue + ", name: " + experimentName);
-            parentWindow.CreateExperiment(theExperiment);
-            */ 
         }
 
         private void pressureToleranceAtLocationMutationButton_Click(object sender, RoutedEventArgs e)
@@ -166,8 +62,6 @@ namespace Hades3
 
             mutationList.Children.Add(ptSlider);
             pressureToleranceAtLocationMutationButton.IsEnabled = false;
-
-            //mutations.Add(new Mutation(BehaviorKind.PressureTolerance));
         }
 
         private void selfDeathMutationButton_Click(object sender, RoutedEventArgs e)
