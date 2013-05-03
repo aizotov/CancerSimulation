@@ -327,13 +327,6 @@ namespace Hades3
         private void toggleMovement()
         {
             allowMovement = !allowMovement;
-
-            /*
-            if (allowMovement)
-                camera.ClickAndDragMouseRotation = false;
-            else
-                camera.ClickAndDragMouseRotation = true;
-             * */
         }
 
         #endregion
@@ -365,11 +358,6 @@ namespace Hades3
             {
                 interferanceQueue.Enqueue(new ToggleAllowPleaseDieSignal());
             }
-
-            /*
-            else if (KeyJustPressed(Keys.Enter))
-                ToggleFullScreen();
-            */
         }
 
         private bool KeyJustPressed(Keys key)

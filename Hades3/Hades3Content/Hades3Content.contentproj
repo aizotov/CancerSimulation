@@ -53,6 +53,10 @@
       <Name>bigTissue</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="newTissueParam.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>newTissueParam</Name>
+    </None>
     <None Include="twoTissues.json">
       <Name>twoTissues</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
