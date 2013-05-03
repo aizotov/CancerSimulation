@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Hades3.MutationCreationWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Title="ExperimentCreationWindow" Width="300" ResizeMode="CanResize" SizeToContent="Height">
+             Title="Mutation Creation" Width="300" ResizeMode="CanResize" SizeToContent="Height">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
             <StackPanel>
@@ -23,7 +23,7 @@
                 <Label Content="mutation name:"></Label>
                 <TextBox Name="mutationNameTextBox" Height="25"></TextBox>
 
-                <Button Name="createExperimentButton" Content="create mutation!" Click="createExperimentButton_Click"></Button>
+                <Button Name="createMutationButton" Content="create mutation!" Click="createMutationButton_Click"></Button>
             </StackPanel>
         </Grid>
     </ScrollViewer>

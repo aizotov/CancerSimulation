@@ -136,7 +136,10 @@ namespace Hades3
             uiWindow = new UIWindow(this);
             uiWindow.Show();
 
+            // set color transparencies
             selectionColor.A = 255;
+            blastCellColor.A = 200;
+            finalCellColor.A = 200;
 
             // Setup frame buffer.
             graphics.SynchronizeWithVerticalRetrace = false;
@@ -327,6 +330,7 @@ namespace Hades3
         private void toggleMovement()
         {
             allowMovement = !allowMovement;
+            this.IsMouseVisible = !this.IsMouseVisible;
         }
 
         #endregion
@@ -508,6 +512,9 @@ namespace Hades3
 
             if (environment != null)
             {
+                if (KeyJustPressed(Keys.M))
+                    Console.WriteLine("pressed m outside");
+
                 view = camera.ViewMatrix;
                 projection = camera.ProjectionMatrix;
                 selection = calculateSelection(camera.CameraEye, camera.ViewDirection);
@@ -529,6 +536,8 @@ namespace Hades3
 
                         if (KeyJustPressed(Keys.M))
                         {
+                            Console.WriteLine("pressing m!");
+
                             if (latestMutation == null)
                                 Console.WriteLine("no mutation selected");
                             else
@@ -585,18 +594,12 @@ namespace Hades3
                 {
                     float scale = environment.GetContentsAt(cell.CellLocation).TissueCells.Count;
 
-                    Color cellColor;
+                    Color cellColor = finalCellColor;
+                    if (cell.GetType() == typeof(BlastCell))
+                        cellColor = blastCellColor;
 
                     if (cell.Mutated)
-                        cellColor = mutationColor;
-                    else
-                    {
-                        cellColor = finalCellColor;
-                        if (cell.GetType() == typeof(BlastCell))
-                            cellColor = blastCellColor;
-                    }
-
-                    cellColor.A = 200;
+                        cellColor = Color.Lerp(cellColor, mutationColor, 0.9f);
 
                     cellModel.Draw(view, projection, cellColor, cell.CellLocation, Matrix.CreateScale(scale));
                 }

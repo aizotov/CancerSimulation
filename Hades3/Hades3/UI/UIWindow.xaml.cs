@@ -166,26 +166,6 @@ namespace Hades3
             mutationCreationWindow.Show();
         }
 
-        //public void CreateExperiment(Experiment newExperiment)
-        //{
-        //    Button newButton = new Button();
-        //    newButton.Content = newExperiment.Name;
-        //    newButton.MinHeight = 50;
-        //    newButton.MinWidth = 50;
-        //    newButton.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-        //    newButton.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-        //    experimentButtonMapping.Add(newButton, newExperiment);
-        //    newButton.Click += delegate(Object sender, RoutedEventArgs e)
-        //    {
-        //        Experiment myExperiment = experimentButtonMapping[(Button)sender];
-        //        Console.WriteLine("starting experiment: " + myExperiment.Name);
-        //        SimulationCore.Instance.accept
-        //        SimulationCore.Instance.AcceptExperiment(myExperiment);
-        //    };
-
-        //    experimentPanel.Children.Add(newButton);
-        //}
-        int counter = 1;
         public void CreateMutationButton(List<Mutation> mutations, string mutationName)
         {
             Button newButton = new Button();
@@ -194,7 +174,7 @@ namespace Hades3
             newButton.MinWidth = 50;
             newButton.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
             newButton.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-            mutationButtonMapping.Add(newButton, mutations);
+            mutationButtonMapping.Add(newButton, new List<Mutation>(mutations));
 
             newButton.Click += delegate(Object sender, RoutedEventArgs e)
             {

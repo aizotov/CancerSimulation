@@ -33,12 +33,13 @@ namespace Hades3
             behaviorValueMap = new Dictionary<BehaviorKind, double>();
         }
 
-        private void createExperimentButton_Click(object sender, RoutedEventArgs e)
+        private void createMutationButton_Click(object sender, RoutedEventArgs e)
         {
             foreach(BehaviorKind m in behaviorValueMap.Keys)
                 mutations.Add(new Mutation(m, behaviorValueMap[m]));
 
             parentWindow.CreateMutationButton(mutations, mutationNameTextBox.Text);
+            Console.WriteLine("in creation window... there are [" + mutations.Count + "] mutations");
             mutations.Clear();
         }
 
