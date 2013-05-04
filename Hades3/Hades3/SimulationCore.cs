@@ -574,14 +574,6 @@ namespace Hades3
             }
         }
 
-        private void drawSelection(Vector3 intSelection)
-        {
-            if (selectedLocation != null && selectedLocation.TissueCells.Count > 0)
-                selectionColor.A = 200;
-            else
-                selectionColor.A = 50;
-            matrixBlock.Draw(view, projection, selectionColor, intSelection);
-        }
 
 
         #region drawThings
@@ -616,7 +608,7 @@ namespace Hades3
                         cellColor = blastCellColor;
 
                     if (cell.Mutated)
-                        cellColor = Color.Lerp(cellColor, mutationColor, 0.9f);
+                        cellColor = Color.Lerp(cellColor, mutationColor, 0.5f);
 
                     cellModel.Draw(view, projection, cellColor, cell.CellLocation, Matrix.CreateScale(scale));
                 }
@@ -683,6 +675,14 @@ namespace Hades3
             }
         }
 
+        private void drawSelection(Vector3 intSelection)
+        {
+            if (selectedLocation != null && selectedLocation.TissueCells.Count > 0)
+                selectionColor.A = 200;
+            else
+                selectionColor.A = 50;
+            matrixBlock.Draw(view, projection, selectionColor, intSelection);
+        }
 
         #endregion
 
