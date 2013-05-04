@@ -30,8 +30,8 @@
       "MaxFoodConcernLevel":95,
       "MinFoodConcernLevel":10,
 
-	  "BlastCellDivideIntoBlastProbability":0.4,
-	  "BlastCellDivideIntoFinalProbability":0.6,
+	  "BlastCellDivideIntoBlastProbability":0.3,
+	  "BlastCellDivideIntoFinalProbability":0.7,
 
       "BlastCellMutationProbability":0.0,
       "BlastCellRepairProbability":0.0,
@@ -59,7 +59,7 @@
          "simpleBehavior":{
             "startingPressureToleranceAtLocation":100,
             "startingPressureToleranceAtNeighbors":1,
-            "startingDivideRate":0.4,
+            "startingDivideRate":0.3,
             "startingDeathRate":0.01,
             "FoodConsumptionRate":1,
             "FoodMaxStorage":100,
@@ -78,7 +78,7 @@
          "simpleBehavior":{
             "startingPressureToleranceAtLocation":100,
             "startingPressureToleranceAtNeighbors":1,
-            "startingDivideRate":0.4,
+            "startingDivideRate":0.3,
             "startingDeathRate":0.01,
             "FoodConsumptionRate":1,
             "FoodMaxStorage":100,
@@ -97,7 +97,7 @@
          "simpleBehavior":{
             "startingPressureToleranceAtLocation":100,
             "startingPressureToleranceAtNeighbors":1,
-            "startingDivideRate":0.4,
+            "startingDivideRate":0.3,
             "startingDeathRate":0.01,
             "FoodConsumptionRate":1,
             "FoodMaxStorage":100,

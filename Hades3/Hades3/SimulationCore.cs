@@ -362,6 +362,12 @@ namespace Hades3
             {
                 interferanceQueue.Enqueue(new ToggleAllowPleaseDieSignal());
             }
+
+            else if (KeyJustPressed(Keys.M))
+            {
+                Console.WriteLine("dat M");
+                giveMutation();
+            }
         }
 
         private bool KeyJustPressed(Keys key)
@@ -493,9 +499,10 @@ namespace Hades3
             }
         }
 
+        LocationContents selectedLocation;
         private void runSimulation()
         {
-            if (runningSimulation)    // maybe this should be in Update(), but this doesn't work with STA
+            if (runningSimulation)
             {
                 environment.Tick(); // update simulation
                 updateGraphs();
@@ -512,9 +519,6 @@ namespace Hades3
 
             if (environment != null)
             {
-                if (KeyJustPressed(Keys.M))
-                    Console.WriteLine("pressed m outside");
-
                 view = camera.ViewMatrix;
                 projection = camera.ProjectionMatrix;
                 selection = calculateSelection(camera.CameraEye, camera.ViewDirection);
@@ -524,39 +528,12 @@ namespace Hades3
                 if (useSelection)
                 {
                     Vector3 intSelection = new Vector3((int)selection.X, (int)selection.Y, (int)selection.Z);
-                    
+                    drawSelection(intSelection);
                     if (environment.GoodPoint(intSelection))
-                    {
-                        LocationContents selectedLocation = environment.GetContentsAt(intSelection);
-                        if (selectedLocation.TissueCells.Count > 0)
-                            selectionColor.A = 200;
-                        else
-                            selectionColor.A = 50;
-                        matrixBlock.Draw(view, projection, selectionColor, intSelection);
-
-                        if (KeyJustPressed(Keys.M))
-                        {
-                            Console.WriteLine("pressing m!");
-
-                            if (latestMutation == null)
-                                Console.WriteLine("no mutation selected");
-                            else
-                            {
-                                if (selectedLocation.TissueCells.Count > 0)
-                                {
-                                    Console.WriteLine("applying mutation [" + latestMutation.Count + "] ... { ");
-                                    foreach (Mutation m in latestMutation)
-                                        Console.WriteLine(m.ToString());
-                                    Console.WriteLine(" } ... to " + selectedLocation.Position + "\n");
-                                    ((TissueCell)selectedLocation.TissueCells[0]).AcceptMutations(latestMutation);
-                                }
-                                else
-                                    Console.WriteLine("no cells at selected location");
-                            }
-                        }
-                        //Console.WriteLine(getStatus(selectedLocation));
-                    }
-                }   // endif useSelection
+                        selectedLocation = environment.GetContentsAt(intSelection);
+                    else
+                        selectedLocation = null;
+                }
 
                 string text = "number of blast cells: " + environment.BlastCellTotal;
                 spriteBatch.Begin();
@@ -564,6 +541,46 @@ namespace Hades3
                 spriteBatch.End();
 
             }   // end if environment != null
+        }
+
+
+        private void giveMutation()
+        {
+            if (selectedLocation == null)
+            {
+                Console.WriteLine("no selected location");
+                return;
+            }
+
+            Console.WriteLine("trying to give mutation to cell");
+
+            if (latestMutation == null)
+                Console.WriteLine("no mutation selected");
+            else
+            {
+                if (selectedLocation.TissueCells.Count > 0)
+                {
+                    Console.WriteLine("applying mutation [" + latestMutation.Count + "] ... { ");
+                    foreach (Mutation m in latestMutation)
+                        Console.WriteLine(m.ToString());
+                    Console.WriteLine(" } ... to " + selectedLocation.Position + "\n");
+                    foreach (TissueCell c in selectedLocation.TissueCells)
+                    {
+                        c.AcceptMutations(latestMutation);
+                    }
+                }
+                else
+                    Console.WriteLine("no cells at selected location");
+            }
+        }
+
+        private void drawSelection(Vector3 intSelection)
+        {
+            if (selectedLocation != null && selectedLocation.TissueCells.Count > 0)
+                selectionColor.A = 200;
+            else
+                selectionColor.A = 50;
+            matrixBlock.Draw(view, projection, selectionColor, intSelection);
         }
 
 
@@ -592,7 +609,7 @@ namespace Hades3
             {
                 if (cell.PipeTravel == null)        // only draw cell if it is not traveling!
                 {
-                    float scale = environment.GetContentsAt(cell.CellLocation).TissueCells.Count;
+                    float scale = (float)UtilityMethods.CubeRoot(environment.GetContentsAt(cell.CellLocation).TissueCells.Count);
 
                     Color cellColor = finalCellColor;
                     if (cell.GetType() == typeof(BlastCell))

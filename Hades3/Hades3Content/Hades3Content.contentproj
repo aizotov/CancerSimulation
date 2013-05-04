@@ -53,8 +53,31 @@
       <Name>bigTissue</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="newTissueParam.json">
+    <None Include="twoTissuesNoTravel.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>twoTissuesNoTravel</Name>
+    </None>
+    <None Include="dense growth.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>dense growth</Name>
+    </None>
+    <None Include="growth3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>growth3</Name>
+    </None>
+    <None Include="growth1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>growth1</Name>
+    </None>
+    <None Include="growth2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>growth2</Name>
+    </None>
+    <None Include="test1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>test1</Name>
+    </None>
+    <None Include="newTissueParam.json">
       <Name>newTissueParam</Name>
     </None>
     <None Include="twoTissues.json">

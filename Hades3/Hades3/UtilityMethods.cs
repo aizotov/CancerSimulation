@@ -49,5 +49,9 @@ namespace Hades3
             return Math.Max(Math.Max(Math.Abs(x), Math.Abs(y)), Math.Abs(z));
         }
 
+        public static double CubeRoot(double val)
+        {
+            return Math.Pow(val, (1.0 / 3.0));
+        }
     }
 }

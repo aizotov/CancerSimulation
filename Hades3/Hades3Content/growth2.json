@@ -59,7 +59,7 @@
          "simpleBehavior":{
             "startingPressureToleranceAtLocation":100,
             "startingPressureToleranceAtNeighbors":1,
-            "startingDivideRate":0.4,
+            "startingDivideRate":0.3,
             "startingDeathRate":0.01,
             "FoodConsumptionRate":1,
             "FoodMaxStorage":100,
@@ -78,7 +78,7 @@
          "simpleBehavior":{
             "startingPressureToleranceAtLocation":100,
             "startingPressureToleranceAtNeighbors":1,
-            "startingDivideRate":0.4,
+            "startingDivideRate":0.3,
             "startingDeathRate":0.01,
             "FoodConsumptionRate":1,
             "FoodMaxStorage":100,
@@ -97,7 +97,7 @@
          "simpleBehavior":{
             "startingPressureToleranceAtLocation":100,
             "startingPressureToleranceAtNeighbors":1,
-            "startingDivideRate":0.4,
+            "startingDivideRate":0.3,
             "startingDeathRate":0.01,
             "FoodConsumptionRate":1,
             "FoodMaxStorage":100,

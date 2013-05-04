@@ -332,21 +332,18 @@ namespace Hades3
         }
 
 
-
         #region pipeTravel
 
         private void travelAlongPipe()
         {
             if (pipeTravel.ContainingPipe.Size < SimulationCore.Instance.SimulationParams.MinPipeSizeForTravel || Environment.random.NextDouble() < cellBehaviors.GetLeavePipeProbability())
             {
-                //Console.WriteLine("leaving pipe");
                 leavePipe();
                 return;
             }
 
             if (Environment.random.NextDouble() > cellBehaviors.GetSurvivePipeProbability())
             {
-               // Console.WriteLine("didnt surivive pipe");
                 pipeTravel.ContainingPipe.travelingCells.Remove(this);
                 die();
                 return;
@@ -355,9 +352,9 @@ namespace Hades3
 
             if (pipeTravel.TravelDirection == PipeTravelDirection.toParent)
             {
+                // no parent to travel to
                 if (pipeTravel.ContainingPipe.Parent == null)
                 {
-                    //Console.WriteLine("no parent to travel to");
                     //leavePipe();
                     //return;
 
@@ -371,9 +368,9 @@ namespace Hades3
 
             else if (pipeTravel.TravelDirection == PipeTravelDirection.toChildren)
             {
+                // no children to travel to
                 if (pipeTravel.ContainingPipe.Children.Count == 0)
                 {
-                    //Console.WriteLine("no children to travel to");
                     leavePipe();
                     return;
 
