@@ -19,10 +19,10 @@ namespace Hades3
 
         public BehaviorTypes behaviorType;
 
-        public class PipeParameters
+        public class PipeLocations
         {
             public Vector3 location;
-            public List<PipeParameters> children;
+            public List<PipeLocations> children;
         }
 
         public class TissueParameters
@@ -41,16 +41,13 @@ namespace Hades3
 
             public int MaxFoodConsumptionRate;
             public int MinFoodConsumptionRate;
+
             public int MaxFoodStorage;
             public int MinFoodStorage;
+
             public int MaxFoodConcernLevel;
             public int MinFoodConcernLevel;
 
-            public double BlastCellMutationProbability;
-            public double BlastCellRepairProbability;
-            
-            public double FinalCellMutationProbability;
-            public double FinalCellRepairProbability;
             public int FinalCellGenerationLimit;
 
             public double BlastCellDivideIntoBlastProbability;
@@ -58,14 +55,18 @@ namespace Hades3
 
             public int PressureAtCell;
             public int PressureNearCell;
-            public int MinPressure;
 
-            public Color BlastCellColor;
-            public Color FinalCellColor;
-            public Color EndothelialCellColor;
-
-            public float PipeShrink;
             public double MutateBy;
+        }
+
+        public class PipeParameters
+        {
+            public double MinimumCellToPipeRatio;
+            public EndothelialCell.PipeOrientation PipeRootOrientation;
+            public float PipeStartingWidth;
+            public float PipeShrink;
+            public double MinPipeSizeForTravel;
+            public int MaxGrowthPerTurn;
         }
 
         public interface BehaviorParam {}
@@ -98,6 +99,8 @@ namespace Hades3
             public double EnterPipeProbability;
             public double LeavePipeProbability;
             public double SurvivePipeProbability;
+
+            public double CallPipeProbability;
         }
 
         public class CellStartConfig
@@ -125,11 +128,9 @@ namespace Hades3
 
         public List<GOTermParam> goTermParams;
 
-        public double MinPipeSizeForTravel;
-        public PipeParameters pipeParams;
-        public double MinimumCellToPipeRatio;
-        public EndothelialCell.PipeOrientation PipeRootOrientation;
-        public float PipeStartingWidth;
+        
+        public PipeLocations PipeCorners;
+        public PipeParameters PipeParams;
 
         public int SectorWidth;
         public int SectorHeight;

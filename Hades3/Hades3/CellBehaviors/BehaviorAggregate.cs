@@ -25,6 +25,8 @@ namespace Hades3
         public abstract double GetLeavePipeProbability();
         public abstract double GetSurvivePipeProbability();
 
+        public abstract double GetCallPipeProbability();        
+
         public abstract void ApplyMutations(List<Mutation> mutationList);
     }
 }

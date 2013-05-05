@@ -196,15 +196,6 @@ namespace Hades3
             mutationCreationButton.IsEnabled = false;
         }
 
-        private void drawSimulationTextBox_Checked(object sender, RoutedEventArgs e)
-        {
-            SimulationCore.Instance.ToggleDrawSimulation();
-        }
-        private void drawSimulationTextBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            SimulationCore.Instance.ToggleDrawSimulation();
-        }
-
         private void drawCellsTextBox_Checked(object sender, RoutedEventArgs e)
         {
             SimulationCore.Instance.ToggleDrawCells();
@@ -254,6 +245,11 @@ namespace Hades3
         private void drawPressureCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             SimulationCore.Instance.ToggleDrawPressure();
+        }
+
+        private void useSelectionCheckBox_Toggle(object sender, RoutedEventArgs e)
+        {
+            SimulationCore.Instance.ToggleUseSelection();
         }
 
     }

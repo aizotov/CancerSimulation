@@ -9,7 +9,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -35,12 +35,12 @@
                 <Button Height="50" Width="100" Content="Start Simulation" Click="startSimulation_Click" Name="startSimulationButton"></Button>
                 <ComboBox Name="startConfigurationComboBox" SelectionChanged="startConfigurationComboBox_SelectionChanged"></ComboBox>
 
-                <CheckBox Content="draw simulation"     Name="drawSimulationTextBox"    IsChecked="True" Checked="drawSimulationTextBox_Checked"    Unchecked="drawSimulationTextBox_Unchecked"     />
-                <CheckBox Content="hide legend"         Name="hideLegendCheckBox"       IsChecked="True" Checked="hideLegendCheckBox_Checked"       Unchecked="hideLegendCheckBox_Unchecked"        />
-                <CheckBox Content="draw cells"          Name="drawCellsCheckBox"        IsChecked="True" Checked="drawCellsTextBox_Checked"         Unchecked="drawCellsTextBox_Unchecked"          />
-                <CheckBox Content="draw blood vessels"  Name="drawBloodVesselsCheckBox" IsChecked="True" Checked="drawBloodVesselsTextBox_Checked"  Unchecked="drawBloodVesselsTextBox_Unchecked"   />
-                <CheckBox Content="draw signals"        Name="drawSignalsCheckBox"      IsChecked="False" Checked="drawSignalsTextBox_Checked"       Unchecked="drawSignalsTextBox_Unchecked"        />
-                <CheckBox Content="draw pressure"       Name="drawPressureCheckBox"     IsChecked="False" Checked="drawPressureCheckBox_Checked"     Unchecked="drawPressureCheckBox_Unchecked"     />
+                <CheckBox Content="hide legend"         Name="hideLegendCheckBox"       IsChecked="True"  Checked="hideLegendCheckBox_Checked"      Unchecked="hideLegendCheckBox_Unchecked"        />
+                <CheckBox Content="draw cells"          Name="drawCellsCheckBox"        IsChecked="True"  Checked="drawCellsTextBox_Checked"        Unchecked="drawCellsTextBox_Unchecked"          />
+                <CheckBox Content="draw blood vessels"  Name="drawBloodVesselsCheckBox" IsChecked="True"  Checked="drawBloodVesselsTextBox_Checked" Unchecked="drawBloodVesselsTextBox_Unchecked"   />
+                <CheckBox Content="draw signals"        Name="drawSignalsCheckBox"      IsChecked="False" Checked="drawSignalsTextBox_Checked"      Unchecked="drawSignalsTextBox_Unchecked"        />
+                <CheckBox Content="draw pressure"       Name="drawPressureCheckBox"     IsChecked="False" Checked="drawPressureCheckBox_Checked"    Unchecked="drawPressureCheckBox_Unchecked"      />
+                <CheckBox Content="use selection"       Name="useSelectionCheckBox"     IsChecked="True"  Checked="useSelectionCheckBox_Toggle"     Unchecked="useSelectionCheckBox_Toggle"         />
             </StackPanel>
             <Button  Content="Stop Simulation" Height="50" Name="stopSimulationButton" Width="100" Click="stopSimulationButton_Click" />
         </StackPanel>

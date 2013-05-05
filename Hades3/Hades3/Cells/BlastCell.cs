@@ -37,7 +37,6 @@ namespace Hades3
         public BlastCell(TissueCell parentCell) : base(parentCell)
         {
             cellBehaviors = new SimpleBehaviorAggregate((SimpleBehaviorAggregate)parentCell.CellBehaviors);
-            //cellBehaviors = parentCell.CellBehaviors.GetClone();
             initializeBlastCell();
         }
 
@@ -67,6 +66,23 @@ namespace Hades3
         protected override void incrementGeneration()
         {
             return;
+        }
+
+        protected override void MoveToBetterLocationIfPossible()
+        {
+            if (Environment.random.NextDouble() < cellBehaviors.GetMoveProbability())
+            {
+                Vector3 possibleNewLocation = Environment.Instance.GetBetterLocation(cellLocation);
+                if (possibleNewLocation != cellLocation)
+                    cellMove(possibleNewLocation);
+            }
+        }
+
+        protected override bool canEnterPipe(EndothelialCell entryPoint)
+        {
+            if (Environment.random.NextDouble() < cellBehaviors.GetEnterPipeProbability())
+                return true;
+            return false;
         }
     }
 }

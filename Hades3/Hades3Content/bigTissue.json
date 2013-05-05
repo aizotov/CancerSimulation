@@ -25,26 +25,19 @@
 
       "MaxFoodConsumptionRate":10,
       "MinFoodConsumptionRate":1,
-      "MaxFoodStorage":200,
+      "MaxFoodStorage":400,
       "MinFoodStorage":50,
       "MaxFoodConcernLevel":95,
       "MinFoodConcernLevel":10,
 
-	  "BlastCellDivideIntoBlastProbability":0.4,
-	  "BlastCellDivideIntoFinalProbability":0.6,
+	   "BlastCellDivideIntoBlastProbability":0.4,
+	   "BlastCellDivideIntoFinalProbability":0.6,
 
-      "BlastCellMutationProbability":0.0,
-      "BlastCellRepairProbability":0.0,
-      "BlastCellColor":"255, 0, 0, 255",
-      "FinalCellMutationProbability":0.0,
-      "FinalCellRepairProbability":0.0,
       "FinalCellGenerationLimit":70,
-      "FinalCellColor":"0, 128, 0, 255",
+
       "PressureAtCell":100,
       "PressureNearCell":1,
-      "MinPressure":1,
-      "EndothelialCellColor":"128, 0, 128, 255",
-      "PipeShrink":0.98,
+
       "MutateBy":0.0
    },
    "cameraLocations":[
@@ -59,15 +52,16 @@
          "simpleBehavior":{
             "startingPressureToleranceAtLocation":100,
             "startingPressureToleranceAtNeighbors":1,
-            "startingDivideRate":0.4,
+            "startingDivideRate":0.35,
             "startingDeathRate":0.01,
             "FoodConsumptionRate":1,
             "FoodMaxStorage":100,
             "FoodConcernLevel":70,
             "MoveProbability":0.3,
-            "EnterPipeProbability":1.0,
-            "LeavePipeProbability":0.0,
-            "SurvivePipeProbability":1.0
+            "EnterPipeProbability":0.3,
+            "LeavePipeProbability":0.1,
+            "SurvivePipeProbability":0.9,
+            "CallPipeProbability":0.0
          },
          "goBehavior":null,
          "startingFood":20
@@ -78,15 +72,16 @@
          "simpleBehavior":{
             "startingPressureToleranceAtLocation":100,
             "startingPressureToleranceAtNeighbors":1,
-            "startingDivideRate":0.4,
+            "startingDivideRate":0.35,
             "startingDeathRate":0.01,
             "FoodConsumptionRate":1,
             "FoodMaxStorage":100,
             "FoodConcernLevel":70,
             "MoveProbability":0.3,
-            "EnterPipeProbability":1.0,
-            "LeavePipeProbability":0.0,
-            "SurvivePipeProbability":1.0
+            "EnterPipeProbability":0.3,
+            "LeavePipeProbability":0.1,
+            "SurvivePipeProbability":0.9,
+            "CallPipeProbability":0.0
          },
          "goBehavior":null,
          "startingFood":20
@@ -97,34 +92,21 @@
          "simpleBehavior":{
             "startingPressureToleranceAtLocation":100,
             "startingPressureToleranceAtNeighbors":1,
-            "startingDivideRate":0.4,
+            "startingDivideRate":0.35,
             "startingDeathRate":0.01,
             "FoodConsumptionRate":1,
             "FoodMaxStorage":100,
             "FoodConcernLevel":70,
             "MoveProbability":0.3,
-            "EnterPipeProbability":1.0,
-            "LeavePipeProbability":0.0,
-            "SurvivePipeProbability":1.0
+            "EnterPipeProbability":0.3,
+            "LeavePipeProbability":0.1,
+            "SurvivePipeProbability":0.9,
+            "CallPipeProbability":0.0
          },
          "goBehavior":null,
          "startingFood":20
       }
    ],
-   "FinalCellConfig":{
-      "startingPressureToleranceAtLocation":100,
-      "startingPressureToleranceAtNeighbors":1,
-      "startingDivideRate":0.3,
-      "startingDeathRate":0.02,
-      "FoodConsumptionRate":1,
-      "FoodMaxStorage":100,
-      "FoodConcernLevel":90,
-      "MoveProbability":0.0,
-      "EnterPipeProbability":0.0,
-      "LeavePipeProbability":0.0,
-      "SurvivePipeProbability":0.0
-   },
-
 
    "goTermParams":null,
 
@@ -140,12 +122,16 @@
    "PipePressureInitial":0,
    "PipePressureIncrement":50,
 
-   "MinimumCellToPipeRatio":0.035,
-   "MinPipeSizeForTravel":0.1,
-   "PipeStartingWidth":1,
-   "PipeRootOrientation":2,
+   "PipeParams":{
+      "MinimumCellToPipeRatio":0.03,
+      "PipeRootOrientation":2,
+      "PipeStartingWidth":1,
+      "PipeShrink":0.98,
+      "MinPipeSizeForTravel":0.1,
+      "MaxGrowthPerTurn":10
+   },
 
-   "pipeParams":{
+   "PipeCorners":{
       "location":"40, 0, 40",
       "children":[
          {

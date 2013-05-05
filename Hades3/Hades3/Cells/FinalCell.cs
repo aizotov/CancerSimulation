@@ -27,21 +27,33 @@ namespace Hades3
         public FinalCell(TissueCell parentCell) : base(parentCell)
         {
             initializeFinalCell();
-            if (parentCell.GetType() == typeof(BlastCell))
-            {
-                this.generation = 1;
-                if (SimulationCore.DEBUG)
-                {
-                    if (parentCell.CellBehaviors.GetType() == typeof(GOBehaviorAggregate))
-                        throw new NotImplementedException("have not implemented GO behaviors yet");
-                }
-                cellBehaviors = new SimpleBehaviorAggregate(SimulationCore.Instance.SimulationParams.FinalCellConfig);
-            }
+            //if (parentCell.GetType() == typeof(BlastCell))
+            //{
+            //    this.generation = 1;
+            //    if (SimulationCore.DEBUG)
+            //    {
+            //        if (parentCell.CellBehaviors.GetType() == typeof(GOBehaviorAggregate))
+            //            throw new NotImplementedException("have not implemented GO behaviors yet");
+            //    }
+
+            //    //cellBehaviors = new SimpleBehaviorAggregate(SimulationCore.Instance.SimulationParams.FinalCellConfig);
+            //}
+
+            cellBehaviors = new SimpleBehaviorAggregate((SimpleBehaviorAggregate)parentCell.CellBehaviors);
+            if (parentCell.GetType() == typeof(FinalCell))
+                this.generation = ((FinalCell)parentCell).generation + 1;
+
+
+
+
+            //cellBehaviors = new SimpleBehaviorAggregate((SimpleBehaviorAggregate)parentCell.CellBehaviors);
+            /*
             else if (parentCell.GetType() == typeof(FinalCell))
             {
                 this.generation = ((FinalCell)parentCell).generation + 1;
                 cellBehaviors = new SimpleBehaviorAggregate((SimpleBehaviorAggregate)parentCell.CellBehaviors);
             }
+             * */
         }
 
         private void initializeFinalCell()
@@ -62,6 +74,15 @@ namespace Hades3
         protected override void incrementGeneration()
         {
             generation++;
+        }
+
+        protected override void MoveToBetterLocationIfPossible()
+        {
+        }
+
+        protected override bool canEnterPipe(EndothelialCell entryPoint)
+        {
+            return false;
         }
 
     }

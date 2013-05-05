@@ -134,6 +134,7 @@
     <Compile Include="CellBehaviors\GOBehaviors\GODivide.cs" />
     <Compile Include="CellBehaviors\PressureTolerance.cs" />
     <Compile Include="CellBehaviors\SimpleBehaviors\SimpleBehaviorAggregate.cs" />
+    <Compile Include="CellBehaviors\SimpleBehaviors\SimpleCallPipe.cs" />
     <Compile Include="CellBehaviors\SimpleBehaviors\SimpleCellBehavior.cs" />
     <Compile Include="CellBehaviors\SimpleBehaviors\SimpleDeathBehavior.cs" />
     <Compile Include="CellBehaviors\SimpleBehaviors\SimpleDivide.cs" />

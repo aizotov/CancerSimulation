@@ -15,6 +15,7 @@ namespace Hades3
         private SimpleFoodMaxStorage foodMaxStorage;
         private SimpleFoodConcern foodConcern;
         private SimpleMove moveAbility;
+        private SimpleCallPipe callPipeProbability;
 
         private SimplePipeEnter pipeEnter;
         private SimplePipeLeave pipeLeave;
@@ -85,6 +86,10 @@ namespace Hades3
             pipeSurvival = new SimplePipeSurvival(startingValues.SurvivePipeProbability);
             SimplePipeSurvival.MaxValue = 1.0;
             SimplePipeSurvival.MinValue = 0.0;
+
+            callPipeProbability = new SimpleCallPipe(startingValues.CallPipeProbability);
+            SimpleCallPipe.MaxValue = 1.0;
+            SimpleCallPipe.MinValue = 0.0;
         }
 
         // copy constructor
@@ -105,6 +110,8 @@ namespace Hades3
             this.pipeEnter = new SimplePipeEnter(old.pipeEnter);
             this.pipeLeave = new SimplePipeLeave(old.pipeLeave);
             this.pipeSurvival = new SimplePipeSurvival(old.pipeSurvival);
+
+            this.callPipeProbability = new SimpleCallPipe(old.callPipeProbability);
         }
 
 
@@ -167,6 +174,11 @@ namespace Hades3
         }
 
 
+        public override double GetCallPipeProbability()
+        {
+            return callPipeProbability.CurrValue;
+        }
+
         public override void Mutate()
         {
             throw new NotImplementedException();
@@ -188,6 +200,22 @@ namespace Hades3
                     moveAbility.MutateTo(m.value);
                     Console.WriteLine("new move probability: " + moveAbility.CurrValue);
                     break;
+                case BehaviorKind.EnterPipeProbability:
+                    pipeEnter.MutateTo(m.value);
+                    Console.WriteLine("new enter pipe probability: " + pipeEnter.CurrValue);
+                    break;
+                case BehaviorKind.ExitPipeProbability:
+                    pipeLeave.MutateTo(m.value);
+                    Console.WriteLine("new leave pipe probability: " + pipeLeave.CurrValue);
+                    break;
+                case BehaviorKind.SurvivePipeProbability:
+                    pipeSurvival.MutateTo(m.value);
+                    Console.WriteLine("new pipe survive probability: " + pipeSurvival.CurrValue);
+                    break;
+                case BehaviorKind.CallPipeProbability:
+                    callPipeProbability.MutateTo(m.value);
+                    Console.WriteLine("new call pipe probability: " + callPipeProbability.CurrValue);
+                    break;
                 case BehaviorKind.PressureToleranceAtLocation:
                     pressureToleranceAtLocation.MutateTo(m.value);
                     Console.WriteLine("new pressure tolerance at location: " + pressureToleranceAtLocation.CurrValue);
@@ -195,6 +223,18 @@ namespace Hades3
                 case BehaviorKind.PressureToleranceAtNeighbors:
                     pressureToleranceAtNeighbors.MutateTo(m.value);
                     Console.WriteLine("new pressure tolerance at neighbs: " + pressureToleranceAtNeighbors.CurrValue);
+                    break;
+                case BehaviorKind.FoodConsumptionRate:
+                    foodConsumptionBehavior.MutateTo(m.value);
+                    Console.WriteLine("new food consumption rate: " + foodConsumptionBehavior.CurrValue);
+                    break;
+                case BehaviorKind.FoodMaxStorage:
+                    foodMaxStorage.MutateTo(m.value);
+                    Console.WriteLine("new food max storage: " + foodMaxStorage.CurrValue);
+                    break;
+                case BehaviorKind.FoodConcernLevel:
+                    foodConcern.MutateTo(m.value);
+                    Console.WriteLine("new food concern level: " + foodConcern.CurrValue);
                     break;
                 default:
                     throw new Exception("unsupported mutation type");

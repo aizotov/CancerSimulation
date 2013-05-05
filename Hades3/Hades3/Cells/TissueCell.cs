@@ -42,7 +42,7 @@ namespace Hades3
             }
         }
 
-        protected int hungerLevel;
+        protected double hungerLevel;
 
         private PipeTravelInfo pipeTravel = null;
         public PipeTravelInfo PipeTravel
@@ -135,16 +135,6 @@ namespace Hades3
             Environment.Instance.DeleteCell(this);
         }
 
-        protected void MoveToBetterLocationIfPossible()
-        {
-            if (Environment.random.NextDouble() < cellBehaviors.GetMoveProbability())
-            {
-                Vector3 possibleNewLocation = Environment.Instance.GetBetterLocation(cellLocation);
-                if (possibleNewLocation != cellLocation)
-                    cellMove(possibleNewLocation);
-            }
-        }
-
         protected bool EnoughSpaceToDivide()
         {
             if (Environment.Instance.GetContentsAt(cellLocation).Pressure > cellBehaviors.GetPressureToleranceAtLocation()) 
@@ -192,9 +182,15 @@ namespace Hades3
         protected bool EnoughFoodInSector()
         {
             //Console.WriteLine("food ratio is: " + containingSector.PipeValue + " / (" + containingSector.FinalCellRealCount + containingSector.BlastCellRealCount + ")  =  " + containingSector.CellPipeRatio);
-            if(containingSector.CellPipeRatio > SimulationCore.Instance.SimulationParams.MinimumCellToPipeRatio)
+            if(containingSector.CellPipeRatio > SimulationCore.Instance.SimulationParams.PipeParams.MinimumCellToPipeRatio)
                 return true;
             return false;
+        }
+
+        protected void tryToCallPipe()
+        {
+            if(Environment.random.NextDouble() < cellBehaviors.GetCallPipeProbability())
+                CirculatorySystem.Instance.AddHungryCell(this);
         }
 
         public override void Tick()
@@ -218,15 +214,14 @@ namespace Hades3
                     if (EnoughSpaceToDivide())
                         divideIfPossible();
                 }
-                else if (hungerLevel == 0)
+                else
+                    hungerLevel -= cellBehaviors.GetFoodConsumptionRate();
+                if (hungerLevel < cellBehaviors.GetFoodConcernLevel())
+                    tryToCallPipe();
+                if (hungerLevel == 0)
                 {
                     die();
                     return;
-                }
-                else if (hungerLevel < cellBehaviors.GetFoodConcernLevel())
-                {
-                    hungerLevel -= cellBehaviors.GetFoodConsumptionRate();
-                    CirculatorySystem.Instance.AddHungryCell(this);
                 }
 
                 if(pipeTravel == null)
@@ -235,6 +230,8 @@ namespace Hades3
                     MoveToBetterLocationIfPossible();
             }
         }
+
+        protected abstract void MoveToBetterLocationIfPossible();
 
         public void AcceptMutations(List<Mutation> mutations)
         {
@@ -300,7 +297,7 @@ namespace Hades3
         protected void cellMove(Vector3 newLocation)
         {
             List<EndothelialCell> possibleEntryPoints = Environment.Instance.GetContentsAt(newLocation).pipes;
-            possibleEntryPoints.RemoveAll(pipe => pipe.Size < SimulationCore.Instance.SimulationParams.MinPipeSizeForTravel);
+            possibleEntryPoints.RemoveAll(pipe => pipe.Size < SimulationCore.Instance.SimulationParams.PipeParams.MinPipeSizeForTravel);
             if (possibleEntryPoints.Count > 0)
             {
                 EndothelialCell entryPoint = UtilityMethods.GetRandomElementInList<EndothelialCell>(possibleEntryPoints);
@@ -336,7 +333,7 @@ namespace Hades3
 
         private void travelAlongPipe()
         {
-            if (pipeTravel.ContainingPipe.Size < SimulationCore.Instance.SimulationParams.MinPipeSizeForTravel || Environment.random.NextDouble() < cellBehaviors.GetLeavePipeProbability())
+            if (pipeTravel.ContainingPipe.Size < SimulationCore.Instance.SimulationParams.PipeParams.MinPipeSizeForTravel || Environment.random.NextDouble() < cellBehaviors.GetLeavePipeProbability())
             {
                 leavePipe();
                 return;
@@ -399,12 +396,7 @@ namespace Hades3
             pipeTravel.ContainingPipe.travelingCells.Add(this);
         }
 
-        private bool canEnterPipe(EndothelialCell entryPoint)
-        {
-            if (Environment.random.NextDouble() < cellBehaviors.GetEnterPipeProbability())
-                return true;
-            return false;
-        }
+        protected abstract bool canEnterPipe(EndothelialCell entryPoint);
 
         private void enterPipe(EndothelialCell entryPoint)
         {

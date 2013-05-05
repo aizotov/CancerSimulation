@@ -8,10 +8,9 @@ namespace Hades3
 {
     public class CirculatorySystem
     {
-        public float minSize = 0.4f;
+        public float minSize = 0.1f;
 
-        private bool setupShrink = true;
-
+        private int maxNumGrowthsPerTurn;
 
         private static CirculatorySystem instance;
         public static CirculatorySystem Instance
@@ -44,35 +43,36 @@ namespace Hades3
             }
         }
 
-        private HashSet<TissueCell> hungryCells;
+        private List<TissueCell> hungryCells;
         private List<GrowingPipe> growingPipes;
 
-        public CirculatorySystem(SimulationParameters.PipeParameters pipeLocations, float pipeShrinkRate, EndothelialCell.PipeOrientation rootOrientation, float startingWidth)
+        public CirculatorySystem(SimulationParameters.PipeParameters pipeParams, SimulationParameters.PipeLocations pipeCorners)
         {
             instance = this;
 
-            this.pipeShrinkRate = pipeShrinkRate;
+            this.pipeShrinkRate = pipeParams.PipeShrink;
 
             pipeCells = new List<EndothelialCell>();
-            hungryCells = new HashSet<TissueCell>();
+            hungryCells = new List<TissueCell>();
             growingPipes = new List<GrowingPipe>();
 
-            EndothelialCell root = new EndothelialCell(pipeLocations.location, rootOrientation, startingWidth, null);
-            setupPipes(root, pipeLocations.children);
+            maxNumGrowthsPerTurn = pipeParams.MaxGrowthPerTurn;
+
+            EndothelialCell root = new EndothelialCell(pipeCorners.location, pipeParams.PipeRootOrientation, pipeParams.PipeStartingWidth, null);
+            setupPipes(root, pipeCorners.children);
         }
 
-        private void setupPipes(EndothelialCell currPos, List<SimulationParameters.PipeParameters> children)
+        private void setupPipes(EndothelialCell currPos, List<SimulationParameters.PipeLocations> children)
         {
             if (children == null || children.Count == 0)
                 return;
 
-            foreach (SimulationParameters.PipeParameters child in children)
+            foreach (SimulationParameters.PipeLocations child in children)
             {
                 EndothelialCell newestPiece = createPipe(currPos, child.location);
                 setupPipes(newestPiece, child.children);
             }
         }
-
 
         // returns the EndothelialCell at target location
         private EndothelialCell createPipe(EndothelialCell from, Vector3 target)
@@ -95,9 +95,25 @@ namespace Hades3
             return currCell;
         }
 
-
         public void Tick()
         {
+            int numGrowths = 0;
+
+            while (hungryCells.Count > 0 && numGrowths < maxNumGrowthsPerTurn)
+            {
+                TissueCell hc = UtilityMethods.GetRandomElementInList<TissueCell>(hungryCells);
+                EndothelialCell closestPipeSection;
+                if (hc.ClosestPipe == null)
+                    closestPipeSection = findClosestPipeSectionTo(hc);
+                else
+                    closestPipeSection = pipeSearch(hc, hc.ClosestPipe);
+                EndothelialCell newGrowth = closestPipeSection.GrowTowards(hc.CellLocation);
+                hc.ClosestPipe = newGrowth;
+                numGrowths++;
+            }
+            hungryCells.Clear();            
+
+            /*
 		    foreach(TissueCell hc in hungryCells){
                 EndothelialCell closestPipeSection;
                 if (hc.ClosestPipe == null)
@@ -108,10 +124,10 @@ namespace Hades3
                 hc.ClosestPipe = newGrowth;
 		    }
             hungryCells.Clear();
+             * */
         }
 
-
-        #region handlePipeGrowth
+        #region handleHungryCells
 
         public void AddHungryCell(TissueCell c)
         {

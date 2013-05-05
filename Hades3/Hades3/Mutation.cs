@@ -13,12 +13,14 @@ namespace Hades3
         EnterPipeProbability,
         ExitPipeProbability,
         SurvivePipeProbability,
+        CallPipeProbability,
         PressureToleranceAtLocation,
         PressureToleranceAtNeighbors,
         FoodConsumptionRate,
         FoodMaxStorage,
         FoodConcernLevel
     }
+
 
     public class Mutation
     {

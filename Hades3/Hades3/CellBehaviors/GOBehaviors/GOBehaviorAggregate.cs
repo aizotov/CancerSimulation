@@ -105,6 +105,11 @@ namespace Hades3
             throw new NotImplementedException();
         }
 
+        public override double GetCallPipeProbability()
+        {
+            throw new NotImplementedException();
+        }
+
 
         public override void Mutate()
         {

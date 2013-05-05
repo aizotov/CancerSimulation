@@ -139,7 +139,7 @@ namespace Hades3
             CreateSectorMap(sectors);
 
             Console.WriteLine("initializing circulatory system");
-            circulatorySystem = new CirculatorySystem(simulationParams.pipeParams, simulationParams.cellParameters.PipeShrink, simulationParams.PipeRootOrientation, simulationParams.PipeStartingWidth);
+            circulatorySystem = new CirculatorySystem(simulationParams.PipeParams, simulationParams.PipeCorners);
 
             Console.WriteLine("setting up initial pressue around the pipes");
             setupPressureAroundPipes(circulatorySystem, simulationParams.PipePressureDistance, simulationParams.PipePressureInitial, simulationParams.PipePressureIncrement);

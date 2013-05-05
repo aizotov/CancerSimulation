@@ -47,7 +47,7 @@ namespace Hades3
         private void divisionRateMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label drLabel = new Label();
-            double value = SimulationCore.Instance.SimulationParams.FinalCellConfig.startingDivideRate;
+            double value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.startingDivideRate;
             drLabel.Content = "division prob: " + value;
             mutationList.Children.Add(drLabel);
 
@@ -71,7 +71,7 @@ namespace Hades3
         private void selfDeathMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label sdLabel = new Label();
-            double value = SimulationCore.Instance.SimulationParams.FinalCellConfig.startingDeathRate;
+            double value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.startingDeathRate;
             sdLabel.Content = "self death prob: " + value;
             mutationList.Children.Add(sdLabel);
 
@@ -96,7 +96,7 @@ namespace Hades3
         private void moveProbabilityButton_Click(object sender, RoutedEventArgs e)
         {
             Label ptLabel = new Label();
-            double value = SimulationCore.Instance.SimulationParams.FinalCellConfig.MoveProbability;
+            double value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.MoveProbability;
             ptLabel.Content = "move prob: " + value;
             mutationList.Children.Add(ptLabel);
 
@@ -120,7 +120,7 @@ namespace Hades3
         private void enterPipeMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label ptLabel = new Label();
-            double value = SimulationCore.Instance.SimulationParams.FinalCellConfig.EnterPipeProbability;
+            double value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.EnterPipeProbability;
             ptLabel.Content = "enter pipe prob: " + value;
             mutationList.Children.Add(ptLabel);
 
@@ -144,7 +144,7 @@ namespace Hades3
         private void exitPipeMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label ptLabel = new Label();
-            double value = SimulationCore.Instance.SimulationParams.FinalCellConfig.LeavePipeProbability;
+            double value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.LeavePipeProbability;
             ptLabel.Content = "exit pipe prob: " + value;
             mutationList.Children.Add(ptLabel);
 
@@ -169,7 +169,7 @@ namespace Hades3
         private void survivePipeMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label ptLabel = new Label();
-            double value = SimulationCore.Instance.SimulationParams.FinalCellConfig.SurvivePipeProbability;
+            double value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.SurvivePipeProbability;
             ptLabel.Content = "survive pipe prob: " + value;
             mutationList.Children.Add(ptLabel);
 
@@ -190,10 +190,34 @@ namespace Hades3
             survivePipeMutationButton.IsEnabled = false;
         }
 
+        private void callPipeMutationButton_Click(object sender, RoutedEventArgs e)
+        {
+            Label ptLabel = new Label();
+            double value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.CallPipeProbability;
+            ptLabel.Content = "call pipe prob: " + value;
+            mutationList.Children.Add(ptLabel);
+
+            Slider ptSlider = new Slider();
+            ptSlider.Value = value;
+            ptSlider.Maximum = 1.0;
+            ptSlider.Minimum = 0.0;
+
+            behaviorValueMap.Add(BehaviorKind.CallPipeProbability, value);
+
+            ptSlider.ValueChanged += delegate(object s, RoutedPropertyChangedEventArgs<double> valueChangedEvent)
+            {
+                behaviorValueMap[BehaviorKind.CallPipeProbability] = valueChangedEvent.NewValue;
+                ptLabel.Content = "call pipe prob: " + valueChangedEvent.NewValue;
+            };
+
+            mutationList.Children.Add(ptSlider);
+            callPipeMutationButton.IsEnabled = false;
+        }
+
         private void pressureToleranceAtLocationMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label ptLabel = new Label();
-            int value = SimulationCore.Instance.SimulationParams.FinalCellConfig.startingPressureToleranceAtLocation;
+            int value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.startingPressureToleranceAtLocation;
             ptLabel.Content = "pressure tolerance at location: " + value;
             mutationList.Children.Add(ptLabel);
 
@@ -219,7 +243,7 @@ namespace Hades3
         private void pressureToleranceAtNeighborsMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label ptLabel = new Label();
-            int value = SimulationCore.Instance.SimulationParams.FinalCellConfig.startingPressureToleranceAtNeighbors;
+            int value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.startingPressureToleranceAtNeighbors;
             ptLabel.Content = "pressure tolerance at neighbors: " + value;
             mutationList.Children.Add(ptLabel);
 
@@ -245,7 +269,7 @@ namespace Hades3
         private void foodConsumptionRateMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label ptLabel = new Label();
-            int value = SimulationCore.Instance.SimulationParams.FinalCellConfig.FoodConsumptionRate;
+            int value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.FoodConsumptionRate;
             ptLabel.Content = "food consumption rate: " + value;
             mutationList.Children.Add(ptLabel);
 
@@ -271,7 +295,7 @@ namespace Hades3
         private void foodMaxStorageMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label ptLabel = new Label();
-            int value = SimulationCore.Instance.SimulationParams.FinalCellConfig.FoodMaxStorage;
+            int value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.FoodMaxStorage;
             ptLabel.Content = "food max storage: " + value;
             mutationList.Children.Add(ptLabel);
 
@@ -297,7 +321,7 @@ namespace Hades3
         private void foodConcernLevelMutationButton_Click(object sender, RoutedEventArgs e)
         {
             Label ptLabel = new Label();
-            int value = SimulationCore.Instance.SimulationParams.FinalCellConfig.FoodConcernLevel;
+            int value = SimulationCore.Instance.SimulationParams.startingCells[0].simpleBehavior.FoodConcernLevel;
             ptLabel.Content = "food concern level: " + value;
             mutationList.Children.Add(ptLabel);
 

@@ -112,22 +112,6 @@ namespace Hades3
             Vector3 unitVector = pipeInfo.Direction;
             PipeOrientation orientation = pipeInfo.Orientation;
 
-            //Vector3 unitVector = UtilityMethods.getGrowthDirection(this.cellLocation, target);
-            //PipeOrientation orientation = UtilityMethods.getPipeOrientation(unitVector);
-
-            //if (unitVector == Vector3.Right)
-            //    orientation = PipeOrientation.posX;
-            //else if (unitVector == Vector3.Left)
-            //    orientation = PipeOrientation.negX;
-            //else if (unitVector == Vector3.Up)
-            //    orientation = PipeOrientation.posY;
-            //else if (unitVector == Vector3.Down)
-            //    orientation = PipeOrientation.negY;
-            //else if (unitVector == Vector3.Forward)
-            //    orientation = PipeOrientation.negZ;
-            //else // if unitVector == Vector3.Backward
-            //    orientation = PipeOrientation.posZ;
-
             Vector3 newCellPosition = this.CellLocation + unitVector;
             size = this.Size * CirculatorySystem.Instance.PipeShrinkRate;
 

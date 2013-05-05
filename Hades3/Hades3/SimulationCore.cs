@@ -42,7 +42,7 @@ namespace Hades3
 
         private Environment environment;
 
-        private bool useSelection = true;
+        private bool useSelection;
         private bool runningSimulation = false;
         private bool allowMovement = false;
         public bool AllowMovement
@@ -70,8 +70,6 @@ namespace Hades3
 
         private KeyboardState currentKeyboardState;
         private KeyboardState prevKeyboardState;
-        private int currTargetIndex;
-
 
         private Vector3 selection;
         
@@ -96,6 +94,8 @@ namespace Hades3
         private List<Mutation> latestMutation;
 
         private RasterizerState wireFrameState;
+
+        LocationContents selectedLocation;
 
         public SimulationCore()
         {
@@ -298,10 +298,6 @@ namespace Hades3
 
         #region toggles
 
-        public void ToggleDrawSimulation()
-        {
-        }
-
         public void ToggleDrawSignals()
         {
             drawSignals = !drawSignals;
@@ -331,6 +327,11 @@ namespace Hades3
         {
             allowMovement = !allowMovement;
             this.IsMouseVisible = !this.IsMouseVisible;
+        }
+
+        public void ToggleUseSelection()
+        {
+            useSelection = !useSelection;
         }
 
         #endregion
@@ -406,15 +407,44 @@ namespace Hades3
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            //if (camera != null)
-            //{
-            //    Console.WriteLine("pos: " + camera.CameraEye);
-            //    //Console.WriteLine("dir: " + camera.ViewDirection);
-            //    Console.WriteLine("\n\n");
-            //}
+            if (runningSimulation)
+            {
+                environment.Tick(); // update simulation
+                updateGraphs();
+                executeInterferences();
+            }
 
-            //testGraphics();
-            runSimulation();
+            if (allowMovement)
+            {
+                Rectangle clientBounds = Window.ClientBounds;
+                int centerX = clientBounds.Width / 2;
+                int centerY = clientBounds.Height / 2;
+                Mouse.SetPosition(centerX, centerY);
+            }
+
+            if (environment != null)
+            {
+                view = camera.ViewMatrix;
+                projection = camera.ProjectionMatrix;
+                selection = calculateSelection(camera.CameraEye, camera.ViewDirection);
+
+                drawSimulation();
+
+                if (useSelection)
+                {
+                    Vector3 intSelection = new Vector3((int)selection.X, (int)selection.Y, (int)selection.Z);
+                    drawSelection(intSelection);
+                    if (environment.GoodPoint(intSelection))
+                        selectedLocation = environment.GetContentsAt(intSelection);
+                    else
+                        selectedLocation = null;
+                }
+
+                string text = "number of blast cells: " + environment.BlastCellTotal;
+                spriteBatch.Begin();
+                spriteBatch.DrawString(spriteFont, text, new Vector2(15, 15), Color.White);
+                spriteBatch.End();
+            }   // end if environment != null
 
             base.Draw(gameTime);
         }
@@ -499,51 +529,6 @@ namespace Hades3
             }
         }
 
-        LocationContents selectedLocation;
-        private void runSimulation()
-        {
-            if (runningSimulation)
-            {
-                environment.Tick(); // update simulation
-                updateGraphs();
-                executeInterferences();
-            }
-
-            if (allowMovement)
-            {
-                Rectangle clientBounds = Window.ClientBounds;
-                int centerX = clientBounds.Width / 2;
-                int centerY = clientBounds.Height / 2;
-                Mouse.SetPosition(centerX, centerY);
-            }
-
-            if (environment != null)
-            {
-                view = camera.ViewMatrix;
-                projection = camera.ProjectionMatrix;
-                selection = calculateSelection(camera.CameraEye, camera.ViewDirection);
-
-                drawSimulation();
-
-                if (useSelection)
-                {
-                    Vector3 intSelection = new Vector3((int)selection.X, (int)selection.Y, (int)selection.Z);
-                    drawSelection(intSelection);
-                    if (environment.GoodPoint(intSelection))
-                        selectedLocation = environment.GetContentsAt(intSelection);
-                    else
-                        selectedLocation = null;
-                }
-
-                string text = "number of blast cells: " + environment.BlastCellTotal;
-                spriteBatch.Begin();
-                spriteBatch.DrawString(spriteFont, text, new Vector2(15, 15), Color.White);
-                spriteBatch.End();
-
-            }   // end if environment != null
-        }
-
-
         private void giveMutation()
         {
             if (selectedLocation == null)
@@ -608,7 +593,7 @@ namespace Hades3
                         cellColor = blastCellColor;
 
                     if (cell.Mutated)
-                        cellColor = Color.Lerp(cellColor, mutationColor, 0.5f);
+                        cellColor = Color.Lerp(cellColor, mutationColor, 0.6f);
 
                     cellModel.Draw(view, projection, cellColor, cell.CellLocation, Matrix.CreateScale(scale));
                 }
