@@ -26,7 +26,7 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font: inherit;
-  vertical-align: baseline;
+  /*vertical-align: baseline;*/
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -50,6 +50,20 @@ table {
 a:focus {
   outline: none;
 }
+
+.screenshot{
+  height:50%;
+}
+
+.tabContent{
+  text-align: left;
+}
+
+.copyright{
+  color:white;
+  
+}
+
 
 /*******************************************************************************
 Theme Styles
@@ -235,7 +249,7 @@ hr {
 }
 
 table {
-  border: 1px solid #373737;
+  /*border: 1px solid #373737;*/
   margin-bottom: 20px;
   text-align: left;
  }
@@ -249,7 +263,7 @@ th {
 
 td {
   padding: 10px;
-  border: 1px solid #373737;
+  /*border: 1px solid #373737;*/
  }
 
 form {
@@ -257,10 +271,6 @@ form {
   padding: 20px;
 }
 
-img {
-  width: 100%;
-  max-width: 100%;
-}
 
 /*******************************************************************************
 Full-Width Styles
@@ -325,9 +335,9 @@ Full-Width Styles
   position: absolute;
   width: 210px;
   z-index: 10;
-  bottom: -40px;
-  right: 0;
-  height: 70px;
+  top: 70px;
+  right: 5px;
+  height: 60px;
   background: url('../images/icon_download.png') no-repeat 0% 90%;
 }
 
@@ -360,11 +370,14 @@ Full-Width Styles
   background: url(../images/sprite_download.png) no-repeat top right;
 }
 
+
 #main_content_wrap {
-  background: #f2f2f2;
+  background: #feeebd/*#f2f2f2*/;
+  /*
   border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
+  border-bottom: 1px solid #111;*/
 }
+
 
 #main_content {
   padding-top: 40px;
