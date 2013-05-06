@@ -19,7 +19,6 @@ body {
   left: 0;
   right: 0;
   z-index: 10;
-  margin-top: 20px;
   margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
 }
 .navbar-wrapper .navbar {
@@ -37,7 +36,7 @@ body {
 /* Downsize the brand/project name a bit */
 .navbar .brand {
   padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
   text-shadow: 0 -1px 0 rgba(0,0,0,.5);
 }
@@ -100,7 +99,8 @@ body {
   margin: 0;
   line-height: 1.25;
   color: #fff;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  /*text-shadow: 0 1px 1px rgba(0,0,0,.4);*/
 }
 .carousel-caption .btn {
   margin-top: 10px;
@@ -130,6 +130,11 @@ body {
 .featurette-divider {
   margin: 80px 0; /* Space out the Bootstrap <hr> more */
 }
+
+.smallFeaturette{
+  overflow: hidden; /* Vertically center images part 2: clear their floats. */
+}
+
 .featurette {
   padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
   overflow: hidden; /* Vertically center images part 2: clear their floats. */
@@ -176,6 +181,11 @@ body {
   .carousel img {
     width: auto;
     height: 500px;
+  }
+
+  .smallFeaturette{
+    height: auto;
+      padding: 0;
   }
 
   .featurette {
@@ -236,4 +246,54 @@ body {
     line-height: 1.5;
   }
 
+}
+
+
+#forkme_banner {
+  display: block;
+  padding: 10px 50px 10px 10px;
+  color: #fff;
+  width:200px;
+  background: url('../images/blacktocat.png') purple no-repeat 95% 50%;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+#downloads {
+  width: 210px;
+  z-index: 10;
+  top: 70px;
+  right: 5px;
+  height: 60px;
+}
+
+.zip_download_link {
+  display: block;
+  float: right;
+  width: 90px;
+  height:70px;
+  text-indent: -5000px;
+  overflow: hidden;
+  background: url(../images/sprite_download.png) no-repeat bottom left;
+}
+
+.tar_download_link {
+  display: block;
+  float: right;
+  width: 90px;
+  height:70px;
+  text-indent: -5000px;
+  overflow: hidden;
+  background: url(../images/sprite_download.png) no-repeat bottom right;
+  margin-left: 10px;
+}
+
+.zip_download_link:hover {
+  background: url(../images/sprite_download.png) no-repeat top left;
+}
+
+.tar_download_link:hover {
+  background: url(../images/sprite_download.png) no-repeat top right;
 }

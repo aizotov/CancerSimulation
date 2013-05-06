@@ -23,51 +23,15 @@
 
   <body>
 
-
-
-    <!-- NAVBAR
+    <!-- Header
     ================================================== -->
     <div class="navbar-wrapper">
-      <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-      <div class="container">
-
-        <div class="navbar navbar-inverse">
-          <div class="navbar-inner">
-            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="#">Cancer Simulation</a>
-            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li class="nav-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div><!-- /.navbar-inner -->
-        </div><!-- /.navbar -->
-
-      </div> <!-- /.container -->
-    </div><!-- /.navbar-wrapper -->
-
-
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <a class="brand" href="#">Cancer Simulation</a>   
+        </div>
+      </div>
+    </div>
 
     <!-- Carousel
     ================================================== -->
@@ -77,22 +41,22 @@
           <img src="images/cellsBanner1.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Model tissue growth at cellular level.</h1>
+              <h1>Model tissue growth at the cellular level.</h1>
               <p class="lead">Choose the inital parameters and watch the drama unfold.</p>
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="images/cellsBanner4.jpg" alt="">
+          <img src="images/cellsBanner2.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Control the cell growth through a dozen parameters.</h1>
-              <p class="lead">Manage behaviors like cell movement, angiogenesis, metastasis, signaling, and more!</p>
+              <h1>Control cell growth through a dozen parameters.</h1>
+              <p class="lead">Manage behaviors like cell movement, angiogenesis, metastasis, and signaling</p>
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="images/cellsBanner5.jpg" alt="">
+          <img src="images/cellsBanner3.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>Create a mutation, choose a target, and watch the cancer grow.</h1>
@@ -120,24 +84,49 @@
 
       <div class="featurette">
         <img class="featurette-image pull-right" src="images/cancerGrowth.png">
-        <h2 class="featurette-heading">Experience a fully 3D Simulation. <span class="muted">Powered by Microsoft XNA 4.0</span></h2>
-        <p class="lead">You'll be able to view the tissue growth from any angle, providing the best seat in the house to observe your chosen cancer grow.</p>
+        <h2 class="featurette-heading">Experience a fully 3D Simulation. <span class="muted">Powered by Microsoft XNA 4.0 </span></h2>
+        <p class="lead">You'll be able to view the tissue from any angle, providing you the best seat in the house to observe the chosen cancer grow.</p>
       </div>
 
       <hr class="featurette-divider">
 
       <div class="featurette">
-        <img class="featurette-image pull-left" src="images/simulationGraphs.png">
-        <h2 class="featurette-heading">Experience dynamic graphs.<span class="muted">Powered by Dynamic Data Display.</span></h2>
+        <img class="featurette-image pull-left" src="images/simulationGraphs_cropped.png">
+        <h2 class="featurette-heading">Experience dynamic graphs. <span class="muted">Powered by Dynamic Data Display. </span></h2>
         <p class="lead">Real time graphs means that you'll have access to up-to-date model statistics without waiting for the run to complete.</p>
       </div>
 
       <hr class="featurette-divider">
 
       <div class="featurette">
-        <img class="featurette-image pull-right" src="images/browser-icon-safari.png">
-        <h2 class="featurette-heading">And lastly, this one. <span class="muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <img class="featurette-image pull-right" src="images/simulationParameters.JPG">
+        <h2 class="featurette-heading">Fully Customizable Simulation Parameters. <span class="muted">Stored in user-friendly .json format. </span></h2>
+        <p class="lead">Allows you to save simulation parameters and share them with a fellow researcher!</p>
+      </div>
+
+      <hr class="featurette-divider">
+        
+      <div class="smallFeaturette">
+        <h2 class="featurette-heading">This project is fully open source... <br><span class="muted">So what are you waiting for? </span> Dive on in! </h2>
+
+        <br>
+
+        <row>
+          <div class="span4">
+            <a id="forkme_banner" href="https://github.com/aizotov/CancerSimulation">View on GitHub</a>
+            <section id="downloads">
+                  <a class="zip_download_link" href="https://github.com/aizotov/CancerSimulation/zipball/master">Download this project as a .zip file</a>
+                  <a class="tar_download_link" href="https://github.com/aizotov/CancerSimulation/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+          </div>
+
+          <div class="span">
+            <button class="btn btn-large btn-primary" id="documentationDownloadBtn">Documentation</button>
+            <button class="btn btn-large btn-primary" id="usageInstructionsDownloadBtn">Usage Instructions</button>
+            <button class="btn btn-large btn-primary" id="exampleCancersDownloadBtn">Example Cancers</button>
+          </div>
+        </row>
+
       </div>
 
       <hr class="featurette-divider">
@@ -147,8 +136,9 @@
 
       <!-- FOOTER -->
       <footer>
+        <p>Project maintained by <a href="https://github.com/aizotov">aizotov</a></p>
+        <a href="mailto:izotov100@gmail.com?Subject=Cancer%20Simulation%20Question">Questions / Concerns</a>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 
     </div><!-- /.container -->
