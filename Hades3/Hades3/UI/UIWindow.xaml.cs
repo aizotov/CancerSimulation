@@ -252,5 +252,10 @@ namespace Hades3
             SimulationCore.Instance.ToggleUseSelection();
         }
 
+        private void showBlastCellCount_Toggle(object sender, RoutedEventArgs e)
+        {
+            SimulationCore.Instance.ToggleShowBlastCellCount();
+        }
+
     }
 }

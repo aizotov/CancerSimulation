@@ -41,6 +41,7 @@
                 <CheckBox Content="draw signals"        Name="drawSignalsCheckBox"      IsChecked="False" Checked="drawSignalsTextBox_Checked"      Unchecked="drawSignalsTextBox_Unchecked"        />
                 <CheckBox Content="draw pressure"       Name="drawPressureCheckBox"     IsChecked="False" Checked="drawPressureCheckBox_Checked"    Unchecked="drawPressureCheckBox_Unchecked"      />
                 <CheckBox Content="use selection"       Name="useSelectionCheckBox"     IsChecked="True"  Checked="useSelectionCheckBox_Toggle"     Unchecked="useSelectionCheckBox_Toggle"         />
+                <CheckBox Content="show blast cell count" Name="blastCellCountCheckBox" IsChecked="True"  Checked="showBlastCellCount_Toggle"       Unchecked="showBlastCellCount_Toggle"           />
             </StackPanel>
             <Button  Content="Stop Simulation" Height="50" Name="stopSimulationButton" Width="100" Click="stopSimulationButton_Click" />
         </StackPanel>

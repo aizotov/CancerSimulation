@@ -76,9 +76,10 @@ namespace Hades3
         public int SelectionDistance = 10;
 
         private bool drawCells;
-        private bool drawPressurePoints = false;
+        private bool drawPressurePoints;
         private bool drawSignals;
         private bool drawPipes;
+        private bool showBlastCellCount;
 
         private VertexPositionColor[] tissueBorderVertices;
         private BasicEffect simulationBorderEffect;
@@ -334,6 +335,11 @@ namespace Hades3
             useSelection = !useSelection;
         }
 
+        public void ToggleShowBlastCellCount()
+        {
+            showBlastCellCount = !showBlastCellCount;
+        }
+
         #endregion
 
         #region processKeyPresses
@@ -440,10 +446,13 @@ namespace Hades3
                         selectedLocation = null;
                 }
 
-                string text = "number of blast cells: " + environment.BlastCellTotal;
-                spriteBatch.Begin();
-                spriteBatch.DrawString(spriteFont, text, new Vector2(15, 15), Color.White);
-                spriteBatch.End();
+                if (showBlastCellCount)
+                {
+                    string text = "number of blast cells: " + environment.BlastCellTotal;
+                    spriteBatch.Begin();
+                    spriteBatch.DrawString(spriteFont, text, new Vector2(15, 15), Color.White);
+                    spriteBatch.End();
+                }
             }   // end if environment != null
 
             base.Draw(gameTime);
